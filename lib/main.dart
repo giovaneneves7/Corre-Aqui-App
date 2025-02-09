@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       locale: const Locale('pt', 'BR'), 
       fallbackLocale: const Locale('en', 'US'),
-      home: LoginScreen(), 
+      home: SigninScreen(), 
     );
   }
 
