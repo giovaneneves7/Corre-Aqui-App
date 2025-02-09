@@ -21,6 +21,7 @@ dependencies:
   google_maps_flutter_web: ^0.5.8
   # location: ^7.0.0
   http: ^1.2.2
+  supabase_auth_ui: ^0.5.4
   supabase_flutter: ^2.8.3
 
 
