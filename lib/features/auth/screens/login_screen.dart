@@ -11,14 +11,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  //final supabase = Supabase.instance.client;
+  final supabase = Supabase.instance.client;
 
   @override
   void initState() {
-    //_setupAuthListener();
+    _setupAuthListener();
     super.initState();
   }
-/*
+
   void _setupAuthListener() {
     supabase.auth.onAuthStateChange.listen((data) {
       print('Evento de autenticação: ${data.event}');
@@ -31,7 +31,39 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-*/
+
+  Future<AuthResponse> _googleSignIn() async {
+
+    const webClientId = '1050336190766-vajsqla3q2dt63k2326bglr8bstod8hg.apps.googleusercontent.com';
+    const iosClientId = '1050336190766-k6024l6mluhvj1gein4fv04oe25jf4sd.apps.googleusercontent.com';
+
+    // Google sign in on Android will work without providing the Android
+    // Client ID registered on Google Cloud.
+
+    final GoogleSignIn googleSignIn = GoogleSignIn(
+      clientId: iosClientId,
+      serverClientId: webClientId,
+    );
+    final googleUser = await googleSignIn.signIn();
+    final googleAuth = await googleUser!.authentication;
+    final accessToken = googleAuth.accessToken;
+    final idToken = googleAuth.idToken;
+
+    if (accessToken == null) {
+      Get.snackbar('Erro', 'Erro de access Token!');
+      throw 'accessToken not found!';
+    }
+    if (idToken == null) {
+      Get.snackbar('Erro', 'Erro de idToken!');
+      throw 'No ID Token found.';
+    }
+
+    return supabase.auth.signInWithIdToken(
+      provider: OAuthProvider.google,
+      idToken: idToken,
+      accessToken: accessToken,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
