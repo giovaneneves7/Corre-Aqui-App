@@ -16,7 +16,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
       shape: CircularNotchedRectangle(),
       notchMargin: 8.0,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 6.0), // Reduz a altura
+        padding: const EdgeInsets.symmetric(vertical: 16.0), 
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
