@@ -56,14 +56,21 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 100,
                     ),
                     const SizedBox(height: 20),
-                    SupaEmailAuth(
-                      redirectTo: 'correaqui://auth-callback',
-                      onSignInComplete: (response) {
-                        Get.toNamed(RouteHelper.getHomeOfferScreen());
-                      },
-                      onSignUpComplete: (response) {
-                        Get.toNamed(RouteHelper.getHomeOfferScreen());
-                      },
+                    Container(
+                      padding: const EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.8),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: SupaEmailAuth(
+                        redirectTo: 'https://mpyyooswcudkgouiomuo.supabase.co/auth/callback',
+                        onSignInComplete: (response) {
+                          Get.toNamed(RouteHelper.getHomeOfferScreen());
+                        },
+                        onSignUpComplete: (response) {
+                          Get.toNamed(RouteHelper.getHomeOfferScreen());
+                        },
+                      ),
                     ),
                   ],
                 ),
