@@ -70,6 +70,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         onSignUpComplete: (response) {
                           Get.toNamed(RouteHelper.getHomeOfferScreen());
                         },
+                        metadata: {
+                          'email_label': 'Email',
+                          'password_label': 'Senha',
+                          'sign_in_button': 'Entrar',
+                          'sign_up_button': 'Criar conta',
+                          'forgot_password': 'Esqueceu sua senha?',
+                        },
                       ),
                     ),
                   ],
