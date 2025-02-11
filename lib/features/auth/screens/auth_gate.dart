@@ -27,7 +27,7 @@ class AuthGate extends StatelessWidget{
         if (session != null) {
           Future.microtask(() => Get.offNamed(RouteHelper.getHomeScreen()));
         } else {
-          Future.microtask(() => Get.offNamed(RouteHelper.getSignScreen()));
+          Future.microtask(() => Get.offNamed(RouteHelper.getSignInScreen()));
         }
         // loading...
         return Scaffold(body: Center(child: CircularProgressIndicator())); 
