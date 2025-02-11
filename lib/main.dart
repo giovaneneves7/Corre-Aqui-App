@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:corre_aqui/features/auth/screens/auth_gate.dart';
 import 'package:corre_aqui/features/auth/screens/signin_screen.dart';
 import 'package:corre_aqui/features/auth/screens/login_screen.dart';
 import 'package:corre_aqui/features/home/screens/home_screen.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       locale: const Locale('pt', 'BR'), 
       fallbackLocale: const Locale('en', 'US'),
-      home: LoginScreen(), 
+      home: AuthGate(), 
     );
   }
 
