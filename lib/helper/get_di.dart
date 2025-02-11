@@ -1,4 +1,5 @@
 import 'package:corre_aqui/api/supabase_api_client.dart';
+import 'package:corre_aqui/features/auth/domain/services/auth_service.dart';
 import 'package:corre_aqui/features/banner/controllers/banner_controller.dart';
 import 'package:corre_aqui/features/banner/domain/repositories/banner_repository_interface.dart';
 import 'package:corre_aqui/features/banner/domain/repositories/banner_repository.dart';
@@ -62,6 +63,10 @@ Future<void> init() async {
 
 
 	// Services
+
+	AuthService authService = AuthService();
+	Get.lazyPut(() => authService);
+
 	BannerServiceInterface bannerServiceInterface = BannerService(bannerRepositoryInterface: Get.find());
 	Get.lazyPut(() => bannerServiceInterface);
 	

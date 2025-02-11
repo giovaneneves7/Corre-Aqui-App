@@ -3,6 +3,7 @@ import 'package:corre_aqui/common/screens/search_screen.dart';
 import 'package:corre_aqui/features/auth/screens/auth_gate.dart';
 import 'package:corre_aqui/features/auth/screens/forgot_password_screen.dart';
 import 'package:corre_aqui/features/auth/screens/login_screen.dart';
+import 'package:corre_aqui/features/auth/screens/register_screen.dart';
 import 'package:corre_aqui/features/auth/screens/signin_screen.dart';
 import 'package:corre_aqui/features/event/screens/event_details_screen.dart';
 import 'package:corre_aqui/features/home/screens/home_screen.dart';
@@ -93,7 +94,7 @@ class RouteHelper{
       page: () => OfferDetailsScreen(offerId: int.parse(Get.parameters['offer_id']!)),
     ),
     GetPage(name: offerMap, page: () => OfferMapScreen()),
-    GetPage(name: register, page: () => SigninScreen()),
+    GetPage(name: register, page: () => RegisterScreen()),
     GetPage(name: searchScreen, page: () => SearchScreen()),
     GetPage(name: signIn, page: () => SigninScreen()),
     GetPage(
