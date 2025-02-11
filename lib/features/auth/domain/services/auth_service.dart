@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 /**
@@ -10,35 +9,36 @@ class AuthService{
 
 	final supabase = Supabase.instance.client;
 
-	Future<AuthResponse> googleSignIn() async {
+  Future<AuthResponse> signInWithEmailAndPassword(String email, String password) async{
 
-    const webClientId = '1050336190766-ttnb5eac6eg3dscunisrm54gr41e33c8.apps.googleusercontent.com';
-    //const iosClientId = '1050336190766-k6024l6mluhvj1gein4fv04oe25jf4sd.apps.googleusercontent.com';
-
-    final GoogleSignIn googleSignIn = GoogleSignIn(
-      serverClientId: webClientId,
+    return await supabase.auth.signInWithPassword(
+      email: email,
+      password: password
     );
-    final googleUser = await googleSignIn.signIn();
-    final googleAuth = await googleUser!.authentication;
-    final accessToken = googleAuth.accessToken;
-    final idToken = googleAuth.idToken;
 
+  }	
 
-    if (accessToken == null) {
-      Get.snackbar('Erro', 'Erro de access Token!');
-      throw 'accessToken not found!';
-    }
-    if (idToken == null) {
-      Get.snackbar('Erro', 'Erro de idToken!');
-      throw 'No ID Token found.';
-    }
+  Future<AuthResponse> signUpWithEmailAndPassword(String email, String password) async{
 
-    return supabase.auth.signInWithIdToken(
-      provider: OAuthProvider.google,
-      idToken: idToken,
-      accessToken: accessToken,
+    return await supabase.auth.signUp(
+      email: email,
+      password: password
     );
-    
+
+  }
+
+  Future<void> signOut() async{
+
+    await supabase.auth.signOut();
+
+  }
+
+  String? getCurrentUserEmail(){
+
+    final session  = supabase.auth.currentSession;
+    final user = session?.user;
+
+    return user?.email;
   }
 
 }

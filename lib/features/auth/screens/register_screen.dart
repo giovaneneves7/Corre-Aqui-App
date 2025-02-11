@@ -9,40 +9,57 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 * @author Giovane Neves
 * @since v0.0.1
 */
-class SigninScreen extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
   @override
-  _SigninScreenState createState() => _SigninScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _SigninScreenState extends State<SigninScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   
   AuthService authService = Get.find();
 
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
-  void login() async {
+  final _confirmPasswordController = TextEditingController();
+  
+  void signUp() async {
 
     // prepare data
     final email = _emailController.text;
     final password = _passwordController.text;
+    final confirmPassword = _confirmPasswordController.text;
 
-    // attempt to login
+    // Check that passwords match
+    if(password != confirmPassword){
+      Get.snackbar(
+        "Registro",
+        "As senhas não coincidem!",
+        colorText: Colors.white,
+        backgroundColor: Colors.red,
+      );
+      return;
+    }    
+
+    // attemt sign up
     try {
-        
-      await authService.signInWithEmailAndPassword(email, password);
-
+      
+      await authService.signUpWithEmailAndPassword(email, password);
+      Get.back();
+      
     } catch (e) {
 
       if(mounted){
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text("Erro: $e")));
+        Get.snackbar(
+        "Registro",
+        "Erro: $e",
+        colorText: Colors.white,
+        backgroundColor: Colors.red,
+      );
       }
-
-    }
+    } 
   }
 
-    @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
@@ -124,11 +141,22 @@ class _SigninScreenState extends State<SigninScreen> {
                               ),
                             ),
                           ),
+                          const SizedBox(height: 12),
+                          TextField(
+                            controller: _confirmPasswordController,
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              labelText: 'Confirme a Senha',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ),
                           const SizedBox(height: 20),
                           SizedBox(
                             width: double.infinity,
                             child: ElevatedButton(
-                              onPressed: login,
+                              onPressed: signUp,
                               style: ElevatedButton.styleFrom(
                                 padding: const EdgeInsets.symmetric(vertical: 15),
                                 shape: RoundedRectangleBorder(
@@ -136,16 +164,12 @@ class _SigninScreenState extends State<SigninScreen> {
                                 ),
                               ),
                               child: const Text(
-                                'Entrar',
+                                'Cadastrar',
                                 style: TextStyle(fontSize: 18),
                               ),
                             ),
                           ),
-                          const SizedBox(height: 10),
-                          GestureDetector(
-                            onTap: () => Get.toNamed(RouteHelper.getRegisterScreen()),
-                            child: Center(child: Text("Não tem uma conta? Registre-se!"))
-                          ),
+                          
                         ],
                       ),
                     ),
