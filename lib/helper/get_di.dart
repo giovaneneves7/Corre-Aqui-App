@@ -25,6 +25,11 @@ import 'package:corre_aqui/features/store/controllers/store_controller.dart';
 import 'package:corre_aqui/features/store/domain/repositories/store_repository_interface.dart';
 import 'package:corre_aqui/features/store/domain/services/store_service.dart';
 import 'package:corre_aqui/features/store/domain/services/store_service_interface.dart';
+import 'package:corre_aqui/features/zone/controllers/zone_controller.dart';
+import 'package:corre_aqui/features/zone/domain/repositories/zone_repository.dart';
+import 'package:corre_aqui/features/zone/domain/repositories/zone_repository_interface.dart';
+import 'package:corre_aqui/features/zone/domain/services/zone_service.dart';
+import 'package:corre_aqui/features/zone/domain/services/zone_service_interface.dart';
 
 import 'package:get/get.dart';
 
@@ -61,6 +66,8 @@ Future<void> init() async {
 	StoreRepositoryInterface storeRepository = StoreRepository(apiClient: Get.find());
 	Get.lazyPut(() => storeRepository);
 
+	ZoneRepositoryInterface zoneRepository = ZoneReository(apiClient: Get.find());
+	Get.lazyPut(() => zoneRepository);
 
 	// Services
 
@@ -82,11 +89,14 @@ Future<void> init() async {
 	StoreServiceInterface storeService = StoreService(storeRepository: Get.find());
 	Get.lazyPut(() => storeService);
 
+	ZoneServiceInterface zoneService = ZoneServiceInterface = ZoneService(zoneRepository: Get.find());
+	Get.lazyPut(() => zoneService);
+
 	// Controllers
 	Get.lazyPut(() => BannerController(bannerServiceInterface: Get.find()));
 	Get.lazyPut(() => CategoryController(categoryServiceInterface: Get.find()));
 	Get.lazyPut(() => EventController(eventServiceInterface: Get.find()));
 	Get.lazyPut(() => OfferController(offerServiceInterface: Get.find()));
 	Get.lazyPut(() => StoreController(storeService: Get.find()));
-	
+	Get.lazyPut(() => ZoneController(zoneController: Get.find()));
 }
