@@ -19,7 +19,7 @@ class ZoneRepository implements ZoneRepositoryInterface{
 
 			return data.map((store) {
 		        
-		    	return Store(
+		    	return Zone(
 		    	  id: store['id'] as int,
 		          cnpj: store['cnpj'] as String,
 		          name: store['name'] as String,
