@@ -12,7 +12,7 @@ class ZoneService implements ZoneServiceInterface{
 
 	final ZoneRepositoryInterface zoneRepository;
 
-	StoreService({required this.zoneRepository});
+	ZoneService({required this.zoneRepository});
 
 	/**
 	* @author Giovane Neves
