@@ -84,17 +84,6 @@ class _SearchScreenState extends State<SearchScreen> with SingleTickerProviderSt
           decoration: InputDecoration(
             hintText: "Buscar produtos, lojas e mais...",
             prefixIcon: const Icon(Icons.search, color: Colors.grey),
-            suffixIcon: GestureDetector(
-              onTapDown: (_) => _startListening(),
-              onTapUp: (_) => _stopListening(),
-              child: ScaleTransition(
-                scale: _animationController,
-                child: Icon(
-                  Icons.mic,
-                  color: _isListening ? Colors.red : Colors.grey,
-                ),
-              ),
-            ),
             filled: true,
             fillColor: Colors.grey.shade100,
             border: OutlineInputBorder(
