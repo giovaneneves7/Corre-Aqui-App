@@ -21,6 +21,12 @@ class ZoneController extends GetxController implements GetxService{
 	List<Zone> get zones => _zones;
 	Zone? _closestZone;
 	Zone? get closestZone => _closestZone;
+	Zone? _selectedZone;
+	Zone? get selectedZone => _selectedZone;
+
+	void setSelectedZone(zone){
+		_selectedZone = zone;
+	}
 
 	@override
 	void onInit() {
