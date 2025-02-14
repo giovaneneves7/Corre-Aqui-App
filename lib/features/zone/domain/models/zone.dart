@@ -4,7 +4,7 @@ class Zone{
 	final String name;
 	final double latitude;
 	final double longitude;
-	final double radiusKm;
+	final int radiusKm;
 
 	Zone({
 		required this.id,

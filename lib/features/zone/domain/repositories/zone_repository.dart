@@ -15,7 +15,7 @@ class ZoneRepository implements ZoneRepositoryInterface{
 	Future<List<Zone>> getList() async {
 
 		try{
-		
+
 			final data = await apiClient.getData('zones');
 
 			return data.map((zone) {
@@ -25,7 +25,7 @@ class ZoneRepository implements ZoneRepositoryInterface{
 		          name: zone['name'] as String,
 		          latitude: zone['latitude'] as double,
 		          longitude: zone['longitude'] as double,
-		          radiusKm: zone['radius_km'] as double,
+		          radiusKm: zone['radius_km'] as int,
 		        );
 
 		     }).toList();
