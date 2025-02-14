@@ -66,7 +66,7 @@ Future<void> init() async {
 	StoreRepositoryInterface storeRepository = StoreRepository(apiClient: Get.find());
 	Get.lazyPut(() => storeRepository);
 
-	ZoneRepositoryInterface zoneRepository = ZoneReository(apiClient: Get.find());
+	ZoneRepositoryInterface zoneRepository = ZoneRepository(apiClient: Get.find());
 	Get.lazyPut(() => zoneRepository);
 
 	// Services

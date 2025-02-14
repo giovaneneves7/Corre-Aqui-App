@@ -1,9 +1,10 @@
 import 'package:corre_aqui/api/supabase_api_client.dart';
 import 'package:corre_aqui/features/zone/domain/models/zone.dart';
 import 'package:corre_aqui/features/zone/domain/repositories/zone_repository_interface.dart';
-import 'package:get/get.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
+/**
+ * @author Giovane Neves
+ */
 class ZoneRepository implements ZoneRepositoryInterface{
 
 	final SupabaseApiClient apiClient;
@@ -17,21 +18,21 @@ class ZoneRepository implements ZoneRepositoryInterface{
 		
 			final data = await apiClient.getData('zones');
 
-			return data.map((store) {
+			return data.map((zone) {
 		        
 		    	return Zone(
-		    	  id: store['id'] as int,
-		          cnpj: store['cnpj'] as String,
-		          name: store['name'] as String,
-		          imageUrl: store['image_url'] as String,
-		          bannerUrl: store['banner_url'] as String?,
+		    	  id: zone['id'] as String,
+		          name: zone['name'] as String,
+		          latitude: zone['latitude'] as double,
+		          longitude: zone['longitude'] as double,
+		          radiusKm: zone['radius_km'] as double,
 		        );
 
 		     }).toList();
 
 		} catch(e) {
 
-			throw Exception('Erro ao buscar lista de lojas: $e');
+			throw Exception('Erro ao buscar lista de zonas: $e');
 
 		}
 
