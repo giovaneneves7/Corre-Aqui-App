@@ -1,7 +1,13 @@
+import 'package:corre_aqui/features/store/controllers/store_controller.dart';
 import 'package:corre_aqui/util/images.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:get/get.dart';
 
+/**
+ * @author Giovane Neves
+ * @since V0.0.1
+ */
 class OfferMapScreen extends StatefulWidget {
   const OfferMapScreen({Key? key}) : super(key: key);
 
@@ -10,14 +16,11 @@ class OfferMapScreen extends StatefulWidget {
 }
 
 class _OfferMapScreenState extends State<OfferMapScreen> {
-
   late GoogleMapController mapController;
-
-  // INFO: Centro do mapa
   final LatLng _center = const LatLng(-11.2999, -41.8568);
-
   final List<Marker> _markers = [];
   String? _selectedPlaceName;
+  BitmapDescriptor? _customIcon;
 
   @override
   void initState() {
@@ -25,53 +28,58 @@ class _OfferMapScreenState extends State<OfferMapScreen> {
     _loadCustomMarker();
   }
 
+  /**
+   * Carrega o ícone do marcador personalizado.
+   */
   Future<void> _loadCustomMarker() async {
-    final BitmapDescriptor customIcon = await BitmapDescriptor.fromAssetImage(
+    final icon = await BitmapDescriptor.fromAssetImage(
       const ImageConfiguration(size: Size(72, 95)),
       Images.pinOffer,
     );
 
     setState(() {
-      _markers.addAll([
-        Marker(
-          markerId: const MarkerId('1'),
-          position: const LatLng(-11.3005, -41.8550),
-          icon: customIcon,
-          infoWindow: const InfoWindow(title: "Marker 1"),
-          onTap: () {
-            setState(() {
-              _selectedPlaceName = "Marker 1";
-            });
-          },
-        ),
-        Marker(
-          markerId: const MarkerId('2'),
-          position: const LatLng(-11.3020, -41.8580),
-          icon: customIcon,
-          infoWindow: const InfoWindow(title: "Marker 2"),
-          onTap: () {
-            setState(() {
-              _selectedPlaceName = "Marker 2";
-            });
-          },
-        ),
-      ]);
+      _customIcon = icon;
     });
+
+    _loadStores();
   }
 
   /**
-  * Executado quando o mapa é criado.
-  *
-  * @author Giovane Neves
-  */
+   * Carrega as lojas do controller e cria os marcadores no mapa.
+   */
+  Future<void> _loadStores() async {
+    final storeController = Get.find<StoreController>();
+    await storeController.getStoreList();
+
+    if (_customIcon == null) return;
+
+    setState(() {
+      _markers.clear();
+      for (var store in storeController.stores) {
+        _markers.add(
+          Marker(
+            markerId: MarkerId(store.id.toString()),
+            position: LatLng(
+              (store.latitude != 0) ? store.latitude : -11.3 + store.id * 0.001,
+              (store.longitude != 0) ? store.longitude : -41.85,
+            ),
+            icon: _customIcon!,
+            infoWindow: InfoWindow(title: store.name),
+            onTap: () {
+              setState(() {
+                _selectedPlaceName = store.name;
+              });
+            },
+          ),
+        );
+      }
+    });
+  }
+
   void _onMapCreated(GoogleMapController controller) async {
-
     mapController = controller;
-
-    // INFO: Seleciona o estilo do mapa
     String style = await DefaultAssetBundle.of(context).loadString('assets/maps/map_style.json');
     mapController.setMapStyle(style);
-
   }
 
   @override

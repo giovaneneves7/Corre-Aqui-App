@@ -25,6 +25,8 @@ class StoreRepository implements StoreRepositoryInterface{
 		          name: store['name'] as String,
 		          imageUrl: store['image_url'] as String,
 		          bannerUrl: store['banner_url'] as String?,
+							latitude: store['latitude'] as double,
+							longitude: store['longitude'] as double,
 		        );
 
 		     }).toList();
