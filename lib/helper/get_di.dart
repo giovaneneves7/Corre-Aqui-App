@@ -89,7 +89,7 @@ Future<void> init() async {
 	StoreServiceInterface storeService = StoreService(storeRepository: Get.find());
 	Get.lazyPut(() => storeService);
 
-	ZoneServiceInterface zoneService = ZoneServiceInterface = ZoneService(zoneRepository: Get.find());
+	ZoneServiceInterface zoneService = ZoneService(zoneRepository: Get.find());
 	Get.lazyPut(() => zoneService);
 
 	// Controllers
@@ -98,5 +98,5 @@ Future<void> init() async {
 	Get.lazyPut(() => EventController(eventServiceInterface: Get.find()));
 	Get.lazyPut(() => OfferController(offerServiceInterface: Get.find()));
 	Get.lazyPut(() => StoreController(storeService: Get.find()));
-	Get.lazyPut(() => ZoneController(zoneController: Get.find()));
+	Get.lazyPut(() => ZoneController(zoneService: Get.find()));
 }
