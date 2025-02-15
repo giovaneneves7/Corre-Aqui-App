@@ -9,6 +9,7 @@ import 'package:corre_aqui/features/event/screens/event_details_screen.dart';
 import 'package:corre_aqui/features/home/screens/home_screen.dart';
 import 'package:corre_aqui/features/home/screens/home_offer_screen.dart';
 import 'package:corre_aqui/features/notification/screens/notification_screen.dart';
+import 'package:corre_aqui/features/offer/screens/all_offer_screen.dart';
 import 'package:corre_aqui/features/offer/screens/offers_by_category_screen.dart';
 import 'package:corre_aqui/features/offer/screens/offer_details_screen.dart';
 import 'package:corre_aqui/features/offer-map/screens/offer_map_screen.dart';
@@ -25,6 +26,7 @@ import 'package:get/get.dart';
 */
 class RouteHelper{
 
+  static const String allOffers = '/all-offers';
   static const String authGate = '/auth-gate';
   static const String eventDetails = '/event-details';
   static const String forgotPassword = '/forgot-password';
@@ -41,6 +43,7 @@ class RouteHelper{
   static const String storeDetails = '/store-details';
   static const String storeList = '/store-list';
 
+  static String getAllOffersScreen() => allOffers;
   static String getAuthGateScreen() => authGate;
   static String getEventDetailsScreen({required String eventId}){
 
@@ -75,6 +78,7 @@ class RouteHelper{
 
   // Registro de rotas [ Adicionar todas as rotas do app aqui ] 
   static List<GetPage> routes = [
+    GetPage(name: allOffers, page: () => AllOffersScreen()),
     GetPage(name: authGate, page: () => AuthGate()),
     GetPage(name: 
       eventDetails, 

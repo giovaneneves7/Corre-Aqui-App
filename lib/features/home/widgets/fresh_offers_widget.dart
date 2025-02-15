@@ -32,7 +32,9 @@ class FreshOffersWidget extends StatelessWidget {
                       style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(RouteHelper.getAllOffersScreen());
+                      },
                       child: Text(
                         "Ver Mais",
                         style: TextStyle(color: Colors.red),
