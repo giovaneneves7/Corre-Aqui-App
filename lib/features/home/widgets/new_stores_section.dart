@@ -25,7 +25,7 @@ class NewStoresSection extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    "Estabelecimentos Parceiros",
+                    "Estabelecimentos",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   TextButton(
