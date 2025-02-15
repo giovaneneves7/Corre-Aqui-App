@@ -13,6 +13,7 @@ import 'package:corre_aqui/features/offer/screens/all_offers_screen.dart';
 import 'package:corre_aqui/features/offer/screens/offers_by_category_screen.dart';
 import 'package:corre_aqui/features/offer/screens/offer_details_screen.dart';
 import 'package:corre_aqui/features/offer-map/screens/offer_map_screen.dart';
+import 'package:corre_aqui/features/store/screens/all_stores_screens.dart';
 import 'package:corre_aqui/features/store/screens/store_details_screen.dart';
 import 'package:corre_aqui/features/store/screens/store_list_screen.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,7 @@ import 'package:get/get.dart';
 class RouteHelper{
 
   static const String allOffers = '/all-offers';
+  static const String allStores = '/all-stores';
   static const String authGate = '/auth-gate';
   static const String eventDetails = '/event-details';
   static const String forgotPassword = '/forgot-password';
@@ -44,6 +46,7 @@ class RouteHelper{
   static const String storeList = '/store-list';
 
   static String getAllOffersScreen() => allOffers;
+  static String getAllStoresScreen() => allStores;
   static String getAuthGateScreen() => authGate;
   static String getEventDetailsScreen({required String eventId}){
 
@@ -79,6 +82,7 @@ class RouteHelper{
   // Registro de rotas [ Adicionar todas as rotas do app aqui ] 
   static List<GetPage> routes = [
     GetPage(name: allOffers, page: () => AllOffersScreen()),
+    GetPage(name: allStores, page: () => AllStoresScreen()),
     GetPage(name: authGate, page: () => AuthGate()),
     GetPage(name: 
       eventDetails, 
