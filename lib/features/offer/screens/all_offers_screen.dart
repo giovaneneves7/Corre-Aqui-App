@@ -1,3 +1,4 @@
+import 'package:corre_aqui/common/widgets/cards_template/offer_card_template.dart';
 import 'package:corre_aqui/features/offer/controllers/offer_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
