@@ -9,7 +9,7 @@ import 'package:corre_aqui/features/event/screens/event_details_screen.dart';
 import 'package:corre_aqui/features/home/screens/home_screen.dart';
 import 'package:corre_aqui/features/home/screens/home_offer_screen.dart';
 import 'package:corre_aqui/features/notification/screens/notification_screen.dart';
-import 'package:corre_aqui/features/offer/screens/all_offer_screen.dart';
+import 'package:corre_aqui/features/offer/screens/all_offers_screen.dart';
 import 'package:corre_aqui/features/offer/screens/offers_by_category_screen.dart';
 import 'package:corre_aqui/features/offer/screens/offer_details_screen.dart';
 import 'package:corre_aqui/features/offer-map/screens/offer_map_screen.dart';
