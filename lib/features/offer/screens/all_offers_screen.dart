@@ -15,17 +15,28 @@ class AllOffersScreen extends StatelessWidget {
       appBar: AppBar(title: Text("Ofertas")),
       body: GetBuilder<OfferController>(
         builder: (controller) {
-          return ListView.builder(
-            itemCount: controller.offerList.length,
-            itemBuilder: (context, index) {
-              final offer = controller.offerList[index];
-              return GestureDetector(
-                onTap: () {
-                  Get.toNamed(RouteHelper.getOfferDetailsScreen(offerId: offer.id));
-                },
-                child: OfferCardTemplate(offer: offer, isFromHome: false),
-              );
-            },
+          if (controller.offerList.isEmpty) {
+            return Center(child: Text("Nenhuma oferta disponível"));
+          }
+
+          return SizedBox( 
+            height: MediaQuery.of(context).size.height, 
+            child: ListView.builder(
+              itemCount: controller.offerList.length,
+              itemBuilder: (context, index) {
+                final offer = controller.offerList[index];
+
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.toNamed(RouteHelper.getOfferDetailsScreen(offerId: offer.id));
+                    },
+                    child: OfferCardTemplate(offer: offer, isFromHome: false),
+                  ),
+                );
+              },
+            ),
           );
         },
       ),
