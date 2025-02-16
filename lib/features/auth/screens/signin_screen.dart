@@ -134,14 +134,16 @@ class _SigninScreenState extends State<SigninScreen> {
                             GestureDetector(
                               onTap: () => Get.toNamed(RouteHelper.getRegisterScreen()),
                               child: Row(
-                                const Text("Não tem uma conta?"),
-                                const SizedBox(width: 3),
-                                const Text("Registre-se!",
-                                  style: TextStyle(
-                                    color: Colors.red,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ) 
+                                children: [
+                                  const Text("Não tem uma conta?"),
+                                  const SizedBox(width: 3),
+                                  const Text("Registre-se!",
+                                    style: TextStyle(
+                                      color: Colors.red,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ), 
+                                ],
                               ),
                             ),
                           ],
