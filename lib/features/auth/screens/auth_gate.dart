@@ -24,11 +24,14 @@ class AuthGate extends StatelessWidget{
 
         final session = snapshot.hasData ? snapshot.data!.session : null;
 
-        if (session != null) {
-          Future.microtask(() => Get.offNamed(RouteHelper.getHomeScreen()));
-        } else {
-          Future.microtask(() => Get.offNamed(RouteHelper.getSignInScreen()));
-        }
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (session != null) {
+            Get.offNamed(RouteHelper.getHomeScreen());
+          } else {
+            Get.offNamed(RouteHelper.getSignInScreen());
+          }
+        });
+
         // loading...
         return Scaffold(body: Center(child: CircularProgressIndicator())); 
 

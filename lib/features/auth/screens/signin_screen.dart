@@ -19,17 +19,21 @@ class _SigninScreenState extends State<SigninScreen> {
   final _passwordController = TextEditingController();
 
   void login() async {
-    final email = _emailController.text;
-    final password = _passwordController.text;
-    try {
-      await authService.signInWithEmailAndPassword(email, password);
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text("Erro: $e")));
-      }
+  final email = _emailController.text;
+  final password = _passwordController.text;
+  try {
+    await authService.signInWithEmailAndPassword(email, password);
+    if (mounted) {
+      Get.offAllNamed(RouteHelper.getHomeScreen()); 
+    }
+  } catch (e) {
+    if (mounted) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Erro: $e")));
     }
   }
+}
+
 
   @override
   Widget build(BuildContext context) {
