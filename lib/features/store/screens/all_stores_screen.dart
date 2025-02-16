@@ -11,6 +11,9 @@ import 'package:get/get.dart';
 class AllStoresScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    int crossAxisCount = screenWidth > 800 ? 4 : screenWidth > 600 ? 3 : 2;
+
     return Scaffold(
       appBar: AppBar(title: const Text("Estabelecimentos")),
       body: GetBuilder<StoreController>(
@@ -19,21 +22,26 @@ class AllStoresScreen extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
 
-          return ListView.builder(
+          return Padding(
             padding: const EdgeInsets.all(16.0),
-            itemCount: controller.stores.length,
-            itemBuilder: (context, index) {
-              final store = controller.stores[index];
-              return GestureDetector(
-                onTap: () {
-                  Get.toNamed(RouteHelper.getStoreDetailsScreen(storeId: store.id));
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 12.0),
+            child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
+                crossAxisSpacing: 12,
+                mainAxisSpacing: 12,
+                childAspectRatio: 0.9, 
+              ),
+              itemCount: controller.stores.length,
+              itemBuilder: (context, index) {
+                final store = controller.stores[index];
+                return GestureDetector(
+                  onTap: () {
+                    Get.toNamed(RouteHelper.getStoreDetailsScreen(storeId: store.id));
+                  },
                   child: StoreCardTemplate(store: store),
-                ),
-              );
-            },
+                );
+              },
+            ),
           );
         },
       ),
