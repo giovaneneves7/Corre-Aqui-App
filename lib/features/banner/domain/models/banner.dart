@@ -8,12 +8,14 @@ class Banner{
 	final String imageUrl;
 	final String? description;
 	final String? name;
+	final String? redirectUrl;
 
 	Banner({
 		required this.id, 
 		required this.name, 
 		required this.description, 
-		required this.imageUrl
+		required this.imageUrl,
+		required this.redirectUrl,
 	});
 
 	factory Banner.fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,7 @@ class Banner{
 	      imageUrl: json['image_url'] as String,
 	      name: json['name'] as String?,
 	      description: json['description'] as String?,
+				redirectUrl: json['redirect_url'] as String?,
 	    );
 	}
 
@@ -33,6 +36,7 @@ class Banner{
       		'image_url': imageUrl,
       		'name': name,
       		'description': description,
+					'redirect_url': redirectUrl ?? '',
     	};
   	}
 

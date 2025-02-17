@@ -22,7 +22,8 @@ class BannerRepository implements BannerRepositoryInterface {
 	      				id: banner['id'] as String,
 	      				imageUrl: banner['image_url'] as String,
 	      				name: banner['name'] as String?,
-	      				description: banner['description'] as String?
+	      				description: banner['description'] as String?,
+								redirectUrl: banner['redirect_url'] as String?,
 	      			);
 
 	      	}).toList();
