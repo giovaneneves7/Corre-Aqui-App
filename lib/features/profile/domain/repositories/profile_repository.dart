@@ -17,7 +17,7 @@ class ProfileRepository implements ProfileRepositoryInterface{
 
 			return data.map((store) {
 		        
-		    	return Store(
+		    	return Profile(
 		    	  id: store['id'] as String,
 		          name: store['name'] as String,
 		          imageUrl: store['image_profile_url'] as String,
