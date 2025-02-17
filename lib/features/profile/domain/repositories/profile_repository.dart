@@ -15,19 +15,20 @@ class ProfileRepository implements ProfileRepositoryInterface{
 		
 			final data = await apiClient.getData('profiles');
 
-			return data.map((store) {
+			return data.map((profile) {
 		        
 		    	return Profile(
-		    	  id: store['id'] as String,
-		          name: store['name'] as String,
-		          imageUrl: store['image_profile_url'] as String,
+		    	  id: profile['id'] as String,
+							memberCode: profile['member_code'] as String,
+		          name: profile['name'] as String,
+		          imageUrl: profile['profile_image_url'] as String,
 		        );
 
 		     }).toList();
 
 		} catch(e) {
 
-			throw Exception('Erro ao buscar lista de lojas: $e');
+			throw Exception('Erro ao buscar lista de perfis: $e');
 
 		}
 

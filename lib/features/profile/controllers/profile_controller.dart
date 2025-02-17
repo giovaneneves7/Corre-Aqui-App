@@ -24,7 +24,13 @@ class ProfileController extends GetxController implements GetxService{
 	  getProfileList();
 
 	}
-	
+
+	Profile getProfileByUserId(userId){
+
+			return _profiles.firstWhere((profile) => profile.id == userId);
+
+
+	}
 	Future<void> getProfileList() async{
 
 		_profiles = await profileService.getProfileList();
