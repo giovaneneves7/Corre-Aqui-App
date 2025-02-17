@@ -1,5 +1,6 @@
 import 'package:corre_aqui/features/profile/domain/models/profile.dart';
 import 'package:corre_aqui/features/profile/domain/services/profile_service_interface.dart';
+import 'package:corre_aqui/features/store/domain/models/store.dart';
 import 'package:get/get.dart';
 
 /**
@@ -25,6 +26,18 @@ class ProfileController extends GetxController implements GetxService{
 
 	}
 
+	Future<void> addFavoriteStore(final storeId) async{
+
+		await this.profileService.addFavoriteStore(storeId);
+		update();
+	}
+
+	Future<List<Store>> getFavoriteStores() async{
+
+		return await this.profileService.getFavoriteStores();
+
+	}
+
 	Profile getProfileByUserId(userId){
 
 			return _profiles.firstWhere((profile) => profile.id == userId);
@@ -36,6 +49,19 @@ class ProfileController extends GetxController implements GetxService{
 		_profiles = await profileService.getProfileList();
 		update();
 
-	} 
+	}
+
+	Future<bool> isFavoriteStore(final storeId) async{
+
+		return await profileService.isFavoriteStore(storeId);
+
+	}
+
+	Future<void> removeFavoriteStore(final storeId) async{
+
+		await profileService.removeFavoriteStore(storeId);
+		update();
+
+	}
 
 }

@@ -85,6 +85,7 @@ class ZoneController extends GetxController implements GetxService{
 		}
 
 		_closestZone = nearestZone;
+		_selectedZone = _closestZone;
 		update();
 	}
 	
