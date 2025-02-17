@@ -56,35 +56,48 @@ class ProfileRepository implements ProfileRepositoryInterface{
 	@override
 	Future<List<Store>> getFavoriteStores(String userId, String zoneId) async {
 		try {
-			// Chamando a função RPC no Supabase com o método rpc()
+			// 1. Buscar os store_id na tabela de associações
 			final response = await Supabase.instance.client
-					.rpc('get_favorite_stores', params: {
-				'userId': userId,
-				'zoneId': zoneId,
-			});
+					.from('associacoes')
+					.select('store_id')
+					.eq('user_id', userId)
+					.eq('zone_id', zoneId);
 
-			// Verificando se ocorreu algum erro
-			if (response.error != null) {
-				throw response.error!;
+			if (response.isEmpty) {
+				return [];
 			}
 
-			// Mapeando os dados de lojas para objetos Store
-			List<Store> favoriteStores = (response.data as List).map<Store>((storeData) {
+			List<int> storeIds = response.map<int>((e) => e['store_id'] as int).toList();
+
+			if (storeIds.isEmpty) {
+				return [];
+			}
+
+			// 2. Buscar os detalhes das lojas com os store_id encontrados
+			final storesResponse = await Supabase.instance.client
+					.from('stores') // Substitua pelo nome da tabela de lojas
+					.select('*')
+					.inFilter('id', storeIds); // Usando `inFilter` em vez de `in_`
+
+			if (storesResponse.isEmpty) {
+				return [];
+			}
+
+			List<Store> stores = storesResponse.map<Store>((storeData) {
 				return Store(
-					id: storeData['store_id'] ?? 0,
-					cnpj: storeData['cnpj'] ?? '',
-					name: storeData['name'] ?? '',
-					imageUrl: storeData['image_url'] ?? '',
-					bannerUrl: storeData['banner_url'] ?? '',
-					latitude: storeData['latitude'] ?? 0.0,
-					longitude: storeData['longitude'] ?? 0.0,
+					id: storeData['id'] as int,
+					cnpj: storeData['cnpj'] as String,
+					name: storeData['name'] as String,
+					imageUrl: storeData['image_url'] as String,
+					bannerUrl: storeData['banner_url'] as String,
+					latitude: storeData['latitude'] as double,
+					longitude: storeData['longitude'] as double,
 				);
 			}).toList();
 
-			return favoriteStores;
+			return stores;
 		} catch (e) {
-			print('Erro ao buscar lojas favoritas: $e');
-			return [];
+			rethrow;
 		}
 	}
 
