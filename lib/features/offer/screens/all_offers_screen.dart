@@ -19,24 +19,25 @@ class AllOffersScreen extends StatelessWidget {
             return Center(child: Text("Nenhuma oferta disponível"));
           }
 
-          return SizedBox( 
-            height: MediaQuery.of(context).size.height, 
-            child: ListView.builder(
-              itemCount: controller.offerList.length,
-              itemBuilder: (context, index) {
-                final offer = controller.offerList[index];
-
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.toNamed(RouteHelper.getOfferDetailsScreen(offerId: offer.id));
-                    },
-                    child: OfferCardTemplate(offer: offer, isFromHome: false),
-                  ),
-                );
-              },
+          return GridView.builder(
+            padding: const EdgeInsets.all(8.0),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, // Define o número de colunas (2 ofertas por linha)
+              crossAxisSpacing: 8.0, // Espaçamento horizontal entre os cards
+              mainAxisSpacing: 8.0, // Espaçamento vertical entre os cards
+              childAspectRatio: 0.7, // Define o tamanho do card em relação ao seu conteúdo
             ),
+            itemCount: controller.offerList.length,
+            itemBuilder: (context, index) {
+              final offer = controller.offerList[index];
+
+              return GestureDetector(
+                onTap: () {
+                  Get.toNamed(RouteHelper.getOfferDetailsScreen(offerId: offer.id));
+                },
+                child: OfferCardTemplate(offer: offer, isFromHome: true),
+              );
+            },
           );
         },
       ),
