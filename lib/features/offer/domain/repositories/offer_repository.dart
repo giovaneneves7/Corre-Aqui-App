@@ -31,6 +31,7 @@ class OfferRepository implements OfferRepositoryInterface{
 	      				endDate: DateTime.parse(offer['end_date'] as String),
 	      				storeId: offer['store_id'] as int,	
 	      				categoryId: offer['category_id'] as int,
+								description: offer['description'] as String?,
 	      			);
 
 	      	}).toList();

@@ -2,6 +2,7 @@ import 'package:corre_aqui/features/banner/controllers/banner_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /**
  * Home's screen banner carousel.
@@ -43,16 +44,18 @@ class BannerCarousel extends StatelessWidget {
 							enableInfiniteScroll: true,
 						),
 						itemBuilder: (context, index, realIndex) {
-							return Container(
-								margin: EdgeInsets.only(
-									right: 10,
-									left: 10,
-								),
-								decoration: BoxDecoration(
-									borderRadius: BorderRadius.circular(8),
-									image: DecorationImage(
-										image: NetworkImage(banners[index].imageUrl),
-										fit: BoxFit.cover,
+							final banner = banners[index];
+
+							return GestureDetector(
+								onTap: () => _handleRedirect(banner.redirectUrl),
+								child: Container(
+									margin: const EdgeInsets.symmetric(horizontal: 10),
+									decoration: BoxDecoration(
+										borderRadius: BorderRadius.circular(8),
+										image: DecorationImage(
+											image: NetworkImage(banner.imageUrl),
+											fit: BoxFit.cover,
+										),
 									),
 								),
 							);
@@ -61,5 +64,27 @@ class BannerCarousel extends StatelessWidget {
 				);
 			},
 		);
+	}
+
+	/// Lida com o redirecionamento, verificando se é um link externo ou uma rota interna
+	void _handleRedirect(String? url) {
+		if (url == null || url.isEmpty) return;
+
+		if (Uri.tryParse(url)?.hasScheme ?? false) {
+			// É um link externo (https://, http://)
+			_launchExternalUrl(url);
+		} else {
+			// É um link interno do app (exemplo: /store-details?id=123)
+			Get.toNamed(url);
+		}
+	}
+
+	/// Abre links externos no navegador
+	Future<void> _launchExternalUrl(String url) async {
+		if (await canLaunchUrl(Uri.parse(url))) {
+			await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+		} else {
+			print("Não foi possível abrir: $url");
+		}
 	}
 }
