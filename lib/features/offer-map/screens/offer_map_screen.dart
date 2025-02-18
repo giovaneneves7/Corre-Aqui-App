@@ -1,4 +1,7 @@
+import 'package:corre_aqui/features/category/controllers/category_controller.dart';
 import 'package:corre_aqui/features/store/controllers/store_controller.dart';
+import 'package:corre_aqui/features/store/domain/models/store.dart';
+import 'package:corre_aqui/helper/route_helper.dart';
 import 'package:corre_aqui/util/images.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -19,8 +22,10 @@ class _OfferMapScreenState extends State<OfferMapScreen> {
   late GoogleMapController mapController;
   final LatLng _center = const LatLng(-11.2999, -41.8568);
   final List<Marker> _markers = [];
-  String? _selectedPlaceName;
+  Store? _selectedPlace;
   BitmapDescriptor? _customIcon;
+  int? _selectedCategoryId;
+
 
   @override
   void initState() {
@@ -56,25 +61,83 @@ class _OfferMapScreenState extends State<OfferMapScreen> {
     setState(() {
       _markers.clear();
       for (var store in storeController.stores) {
-        _markers.add(
-          Marker(
-            markerId: MarkerId(store.id.toString()),
-            position: LatLng(
-              (store.latitude != 0) ? store.latitude : -11.3 + store.id * 0.001,
-              (store.longitude != 0) ? store.longitude : -41.85,
+        if (_selectedCategoryId == null || store.categoryId == _selectedCategoryId) {
+          _markers.add(
+            Marker(
+              markerId: MarkerId(store.id.toString()),
+              position: LatLng(
+                (store.latitude != 0) ? store.latitude : -11.3 + store.id * 0.001,
+                (store.longitude != 0) ? store.longitude : -41.85,
+              ),
+              icon: _customIcon!,
+              infoWindow: InfoWindow(title: store.name),
+              onTap: () {
+                setState(() {
+                  _selectedPlace = store;
+                });
+              },
             ),
-            icon: _customIcon!,
-            infoWindow: InfoWindow(title: store.name),
-            onTap: () {
-              setState(() {
-                _selectedPlaceName = store.name;
-              });
-            },
-          ),
-        );
+          );
+        }
       }
     });
   }
+
+  Widget _buildCategoryFilter() {
+    final categoryController = Get.find<CategoryController>();
+
+    return Positioned(
+      top: 50,
+      left: 20,
+      right: 20,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 8,
+            ),
+          ],
+        ),
+        child: GetBuilder<CategoryController>( // <-- Alterado para GetBuilder
+          builder: (categoryController) {
+            if (categoryController.categoryList.isEmpty) {
+              return const Center(child: CircularProgressIndicator());
+            }
+
+            return DropdownButton<int>(
+              value: _selectedCategoryId,
+              hint: const Text("Filtrar por categoria"),
+              isExpanded: true,
+              underline: const SizedBox(),
+              onChanged: (value) {
+                setState(() {
+                  _selectedCategoryId = value;
+                  _loadStores();
+                });
+              },
+              items: [
+                const DropdownMenuItem<int>(
+                  value: null,
+                  child: Text("Todas as Categorias"),
+                ),
+                ...categoryController.categoryList.map((category) {
+                  return DropdownMenuItem<int>(
+                    value: category.id,
+                    child: Text(category.name),
+                  );
+                }).toList(),
+              ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+
 
   void _onMapCreated(GoogleMapController controller) async {
     mapController = controller;
@@ -97,7 +160,8 @@ class _OfferMapScreenState extends State<OfferMapScreen> {
             myLocationEnabled: true,
             zoomControlsEnabled: false,
           ),
-          if (_selectedPlaceName != null) _buildBottomSheet(),
+          _buildCategoryFilter(),
+          if (_selectedPlace?.name != null) _buildBottomSheet(),
         ],
       ),
     );
@@ -125,30 +189,30 @@ class _OfferMapScreenState extends State<OfferMapScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              _selectedPlaceName ?? "",
+              _selectedPlace!.name ?? "",
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 10),
-            const Text(
-              "Detalhes sobre este local aparecerão aqui.",
-              style: TextStyle(fontSize: 14),
+            Text(
+              _selectedPlace!.description ?? 'Nenhuma descrição foi adicionada',
+              style: const TextStyle(fontSize: 14),
             ),
             const Spacer(),
             ElevatedButton(
               onPressed: () {
-                // Lógica para ação do botão
+                Get.toNamed(RouteHelper.getStoreDetailsScreen(storeId: _selectedPlace!.id));
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+                backgroundColor: Colors.red,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
               child: const Center(
-                child: Text("Ver Direções"),
+                child: Text("Ir para Estabelecimento",),
               ),
             ),
           ],

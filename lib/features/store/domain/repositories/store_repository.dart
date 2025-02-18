@@ -20,13 +20,15 @@ class StoreRepository implements StoreRepositoryInterface{
 			return data.map((store) {
 		        
 		    	return Store(
-		    	  id: store['id'] as int,
+		    	  	id: store['id'] as int,
+							categoryId: store['category_id'] as int,
 		          cnpj: store['cnpj'] as String,
 		          name: store['name'] as String,
 		          imageUrl: store['image_url'] as String,
 		          bannerUrl: store['banner_url'] as String?,
 							latitude: store['latitude'] as double,
 							longitude: store['longitude'] as double,
+							description: store['description'] as String?,
 		        );
 
 		     }).toList();
