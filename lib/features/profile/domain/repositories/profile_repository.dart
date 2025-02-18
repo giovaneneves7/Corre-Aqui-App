@@ -86,12 +86,14 @@ class ProfileRepository implements ProfileRepositoryInterface{
 			List<Store> stores = storesResponse.map<Store>((storeData) {
 				return Store(
 					id: storeData['id'] as int,
+					categoryId: storeData['category_id'] as int,
 					cnpj: storeData['cnpj'] as String,
 					name: storeData['name'] as String,
 					imageUrl: storeData['image_url'] as String,
 					bannerUrl: storeData['banner_url'] as String,
 					latitude: storeData['latitude'] as double,
 					longitude: storeData['longitude'] as double,
+					description: storeData['description'] as String?,
 				);
 			}).toList();
 
