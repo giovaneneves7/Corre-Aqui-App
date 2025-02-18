@@ -13,5 +13,6 @@ abstract class ProfileServiceInterface{
 	Future<List<Profile>> getProfileList();
 	Future<bool> isFavoriteStore(final storeId);
 	Future<void> removeFavoriteStore(final storeId);
+	Future<void> updateProfile(String name, String phone, String imageUrl);
 
 }

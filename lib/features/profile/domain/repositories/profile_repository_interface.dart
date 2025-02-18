@@ -13,4 +13,5 @@ abstract class ProfileRepositoryInterface implements RepositoryInterface{
 	Future<List<Store>> getFavoriteStores(String userId, String zoneId);
 	Future<bool> isFavoriteStore(String userId, int storeId, String zoneId);
 	Future<void> removeFavoriteStore(String userId, int storeId);
+	Future<void> updateProfile(String userId, String name, String phone, String imageUrl);
 }

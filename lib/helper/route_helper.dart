@@ -13,10 +13,10 @@ import 'package:corre_aqui/features/offer/screens/all_offers_screen.dart';
 import 'package:corre_aqui/features/offer/screens/offers_by_category_screen.dart';
 import 'package:corre_aqui/features/offer/screens/offer_details_screen.dart';
 import 'package:corre_aqui/features/offer-map/screens/offer_map_screen.dart';
+import 'package:corre_aqui/features/profile/screens/edit_profile_screen.dart';
 import 'package:corre_aqui/features/store/screens/all_stores_screen.dart';
 import 'package:corre_aqui/features/store/screens/store_details_screen.dart';
 import 'package:corre_aqui/features/store/screens/store_list_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 /**
@@ -30,6 +30,7 @@ class RouteHelper{
   static const String allOffers = '/all-offers';
   static const String allStores = '/all-stores';
   static const String authGate = '/auth-gate';
+  static const String editProfile = '/edit-profile';
   static const String eventDetails = '/event-details';
   static const String forgotPassword = '/forgot-password';
   static const String login = '/login';
@@ -48,6 +49,7 @@ class RouteHelper{
   static String getAllOffersScreen() => allOffers;
   static String getAllStoresScreen() => allStores;
   static String getAuthGateScreen() => authGate;
+  static String getEditProfileScreen() => editProfile;
   static String getEventDetailsScreen({required String eventId}){
 
     return '$eventDetails?event_id=$eventId';    
@@ -84,6 +86,7 @@ class RouteHelper{
     GetPage(name: allOffers, page: () => AllOffersScreen()),
     GetPage(name: allStores, page: () => AllStoresScreen()),
     GetPage(name: authGate, page: () => AuthGate()),
+    GetPage(name: editProfile, page: () => EditProfileScreen()),
     GetPage(name: 
       eventDetails, 
       page: () => EventDetailsScreen(eventId: Get.parameters['event_id']!),

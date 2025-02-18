@@ -41,6 +41,7 @@ class ProfileRepository implements ProfileRepositoryInterface{
 							memberCode: profile['member_code'] as String,
 		          name: profile['name'] as String,
 		          imageUrl: profile['profile_image_url'] as String,
+							phone: profile['phone'] as String?,
 		        );
 
 		     }).toList();
@@ -133,6 +134,29 @@ class ProfileRepository implements ProfileRepositoryInterface{
 	}
 
 	@override
+	Future<void> updateProfile(String userId, String name, String phone, String imageUrl) async {
+
+		try{
+
+			final data = {
+				'name': name,
+				'phone': phone,
+				'profile_image_url': imageUrl,
+			};
+
+			final filters = {'id': userId};
+
+			apiClient.putData('profiles', data, filters);
+
+		} catch(e){
+			throw Exception('Erro ao atualizar o perfil: $e');
+		}
+
+	}
+
+
+
+	@override
   	Future add(value) {
     	throw UnimplementedError();
   	}
@@ -151,6 +175,8 @@ class ProfileRepository implements ProfileRepositoryInterface{
   	Future update(Map<String, dynamic> body, int? id) {
     	throw UnimplementedError();
   	}
+
+
 
 
 	  

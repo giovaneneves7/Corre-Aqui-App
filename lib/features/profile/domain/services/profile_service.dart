@@ -67,4 +67,13 @@ class ProfileService implements ProfileServiceInterface{
 
   }
 
+	@override
+	Future<void> updateProfile(String name, String phone, String imageUrl) async{
+
+		final userId = Supabase.instance.client.auth.currentUser!.id;
+
+		await this.profileRepository.updateProfile(userId, name, phone, imageUrl);
+
+	}
+
 }

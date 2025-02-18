@@ -9,7 +9,8 @@ class Profile{
 	final String memberCode;
 	final String name;
 	final String imageUrl;
+	final String? phone;
 
-	Profile({required this.id, required this.name, required this.memberCode, required this.imageUrl});
+	Profile({required this.id, required this.name, required this.memberCode, required this.imageUrl, required this.phone});
 	
 }

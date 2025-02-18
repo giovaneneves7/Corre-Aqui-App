@@ -50,7 +50,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: IconButton(
                     icon: const Icon(Icons.edit, color: Colors.white),
                     onPressed: () {
-                      // Adicione a lógica de edição aqui
+                      Get.toNamed(RouteHelper.getEditProfileScreen());
                     },
                   ),
                 ),

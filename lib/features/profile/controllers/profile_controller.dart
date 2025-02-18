@@ -71,4 +71,11 @@ class ProfileController extends GetxController implements GetxService{
 
 	}
 
+	Future<void> updateProfile(String name, String phone, String imageUrl) async{
+
+		await profileService.updateProfile(name, phone, imageUrl);
+		update();
+
+	}
+
 }
