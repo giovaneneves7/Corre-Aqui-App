@@ -1,5 +1,6 @@
 import 'package:corre_aqui/features/profile/controllers/profile_controller.dart';
 import 'package:corre_aqui/features/store/domain/models/store.dart';
+import 'package:corre_aqui/helper/route_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -38,15 +39,9 @@ class FavoriteScreen extends StatelessWidget {
                           ? Image.network(store.imageUrl, width: 50, height: 50)
                           : Icon(Icons.store),
                       title: Text(store.name),
-                      subtitle: Text(store.cnpj),
-                      trailing: IconButton(
-                        icon: Icon(Icons.remove_circle),
-                        onPressed: () {
-                          // Função para remover o favorito (você precisa implementá-la)
-                        },
-                      ),
+                      subtitle: Text(store.description ?? 'Nenhuma descrição foi adicionada'),
                       onTap: () {
-                        // Ação ao clicar no card da loja (exemplo: abrir detalhes da loja)
+                        Get.toNamed(RouteHelper.getStoreDetailsScreen(storeId: store.id));
                       },
                     ),
                   );

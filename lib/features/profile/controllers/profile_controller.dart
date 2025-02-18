@@ -34,7 +34,14 @@ class ProfileController extends GetxController implements GetxService{
 
 	Future<List<Store>> getFavoriteStores() async{
 
-		return await this.profileService.getFavoriteStores();
+		try {
+			final stores = await this.profileService.getFavoriteStores();
+			return stores;
+		} catch (e, stack) {
+			print('[Controller] ERRO: $e');
+			print('[Controller] StackTrace: $stack');
+			rethrow;
+		}
 
 	}
 
