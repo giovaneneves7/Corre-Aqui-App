@@ -59,6 +59,9 @@ class _ZoneSelectorModalState extends State<ZoneSelectorModal> {
                     color: Colors.white,
                   ),
                   label: const Text("Trocar Zona"),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey,
+                  ),
                 ),
               ],
             );
