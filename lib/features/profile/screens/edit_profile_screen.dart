@@ -17,13 +17,25 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _phoneController = TextEditingController();
-  final _dobController = TextEditingController();
   bool isMale = true;
   String imageUrl = "";
+
+  @override
+  void initState() {
+    super.initState();
+    final supabase = Supabase.instance.client;
+    String? userId = supabase.auth.currentUser?.id;
+    if (userId != null) {
+      final profileController = Get.find<ProfileController>();
+      final profile = profileController.getProfileByUserId(userId);
+      _nameController.text = profile.name;
+      _phoneController.text = profile.phone ?? '--';
+      imageUrl = profile.imageUrl;
+    }
+  }
 
   Future<void> _pickAndUploadImage(ProfileController profileController, String userId) async {
     final picker = ImagePicker();
@@ -46,6 +58,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         imageUrl = newImageUrl;
       });
 
+      profileController.update();
+
     } catch (e) {
       Get.snackbar("Erro", "Falha ao enviar a imagem: $e", backgroundColor: Colors.red, colorText: Colors.white);
       print("$e");
@@ -58,11 +72,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       final supabase = Supabase.instance.client;
       String? userId = supabase.auth.currentUser?.id;
       Profile profile = profileController.getProfileByUserId(userId);
-
-      _nameController.text = profile.name;
-      _phoneController.text = profile.phone ?? '--';
-      isMale = true;
-      imageUrl = imageUrl.isEmpty ? profile.imageUrl : imageUrl;
 
       return Scaffold(
         appBar: AppBar(
@@ -130,36 +139,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         decoration: const InputDecoration(labelText: "Telefone"),
                         keyboardType: TextInputType.phone,
                       ),
-                      /*Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text("Sexo: "),
-                          Row(
-                            children: [
-                              Radio(
-                                value: true,
-                                groupValue: isMale,
-                                onChanged: (value) {
-                                  setState(() => isMale = true);
-                                },
-                              ),
-                              const Text("Masculino"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Radio(
-                                value: false,
-                                groupValue: isMale,
-                                onChanged: (value) {
-                                  setState(() => isMale = false);
-                                },
-                              ),
-                              const Text("Feminino"),
-                            ],
-                          ),
-                        ],
-                      ),*/
                       const SizedBox(height: 20),
                       ElevatedButton(
                         onPressed: () {
