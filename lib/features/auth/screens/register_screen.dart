@@ -60,8 +60,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       barrierDismissible: false,
     );
 
-
-      Get.back();
     } catch (e) {
       if (mounted) {
         Get.snackbar(
