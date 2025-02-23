@@ -3,6 +3,7 @@ import 'package:corre_aqui/helper/route_helper.dart';
 import 'package:corre_aqui/util/images.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /**
  * @author Giovane Neves
@@ -37,6 +38,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     try {
       await authService.signUpWithEmailAndPassword(email, password);
+      
+      Get.dialog(
+      AlertDialog(
+        title: const Text("Verifique seu e-mail"),
+        content: const Text("Um link de verificação foi enviado para seu e-mail. Você precisa confirmá-lo antes de fazer login."),
+        actions: [
+          TextButton(
+            onPressed: () => Get.back(), 
+            child: const Text("OK"),
+          ),
+          TextButton(
+            onPressed: () async {
+              Get.back();
+              await openEmailApp(); 
+            },
+            child: const Text("Abrir e-mail"),
+          ),
+        ],
+      ),
+      barrierDismissible: false,
+    );
+
+
       Get.back();
     } catch (e) {
       if (mounted) {
@@ -47,6 +71,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
           backgroundColor: Colors.red,
         );
       }
+    }
+  }
+
+  Future<void> openEmailApp() async {
+    final Uri emailUri = Uri(scheme: 'mailto');
+    if (await canLaunchUrl(emailUri)) {
+      await launchUrl(emailUri);
+    } else {
+      Get.snackbar(
+        "Erro",
+        "Não foi possível abrir o app de e-mail.",
+        colorText: Colors.white,
+        backgroundColor: Colors.red,
+      );
     }
   }
 
