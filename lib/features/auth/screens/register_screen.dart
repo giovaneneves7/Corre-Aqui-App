@@ -45,7 +45,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
         content: const Text("Um link de verificação foi enviado para seu e-mail. Você precisa confirmá-lo antes de fazer login."),
         actions: [
           TextButton(
-            onPressed: () => Get.back(), 
+            onPressed: () {
+              Get.back();
+              Get.back();
+            },
             child: const Text("OK"),
           ),
           TextButton(
