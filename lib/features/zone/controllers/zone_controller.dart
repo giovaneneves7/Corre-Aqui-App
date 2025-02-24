@@ -26,6 +26,7 @@ class ZoneController extends GetxController implements GetxService{
 
 	void setSelectedZone(zone){
 		_selectedZone = zone;
+		update();
 	}
 
 	@override
@@ -39,13 +40,15 @@ class ZoneController extends GetxController implements GetxService{
 	Future<void> getClosestZone(zones) async{
 
 		_closestZone = await zoneService.getClosestZone(zones);
+		setSelectedZone(_closestZone);
 		update();
 
 	}
 	Future<void> getZoneList() async{
 
 		_zones = await zoneService.getZoneList();
-		await getClosestZone(_zones);
+		final zone = await getClosestZone(_zones);
+
 		update();
 
 	} 
