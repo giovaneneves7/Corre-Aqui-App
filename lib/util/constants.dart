@@ -1,5 +1,4 @@
 class Constants{
 
-	static const String? token;
-	static const String userAddress = 'user_address'; 
+	static const String zoneId = "corre_aqui_zone_id";
 }

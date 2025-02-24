@@ -74,7 +74,7 @@ Future<void> init() async {
 	StoreRepositoryInterface storeRepository = StoreRepository(apiClient: Get.find());
 	Get.lazyPut(() => storeRepository);
 
-	ZoneRepositoryInterface zoneRepository = ZoneRepository(apiClient: Get.find());
+	ZoneRepositoryInterface zoneRepository = ZoneRepository(apiClient: Get.find(), sharedPreferences: Get.find());
 	Get.lazyPut(() => zoneRepository);
 
 	// Services
@@ -100,7 +100,7 @@ Future<void> init() async {
 	StoreServiceInterface storeService = StoreService(storeRepository: Get.find());
 	Get.lazyPut(() => storeService);
 
-	ZoneServiceInterface zoneService = ZoneService(zoneRepository: Get.find());
+	ZoneServiceInterface zoneService = ZoneService(zoneRepository: Get.find(), sharedPreferences: Get.find());
 	Get.lazyPut(() => zoneService);
 
 	// Controllers

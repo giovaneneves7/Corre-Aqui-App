@@ -1,6 +1,7 @@
 import 'package:corre_aqui/api/supabase_api_client.dart';
 import 'package:corre_aqui/features/zone/domain/models/zone.dart';
 import 'package:corre_aqui/features/zone/domain/repositories/zone_repository_interface.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /**
  * @author Giovane Neves
@@ -8,8 +9,9 @@ import 'package:corre_aqui/features/zone/domain/repositories/zone_repository_int
 class ZoneRepository implements ZoneRepositoryInterface{
 
 	final SupabaseApiClient apiClient;
+	final SharedPreferences sharedPreferences;
 
-	ZoneRepository({required this.apiClient});
+	ZoneRepository({required this.apiClient, required this.sharedPreferences});
 
 	@override
 	Future<List<Zone>> getList() async {
@@ -39,6 +41,11 @@ class ZoneRepository implements ZoneRepositoryInterface{
 	}
 
 	@override
+	void saveZone(Zone zone) {
+
+	}
+
+	@override
   	Future add(value) {
     	throw UnimplementedError();
   	}
@@ -49,14 +56,36 @@ class ZoneRepository implements ZoneRepositoryInterface{
   	}
 
   	@override
-  	Future get(String? id) {
-    	throw UnimplementedError();
+  	Future get(String? id) async{
+
+			if (id == null) return null;
+
+			try {
+				final data = await apiClient.getData('zones', filters: {'id': id});
+
+				if (data.isEmpty) return null;
+
+				final zone = data.first;
+
+				return Zone(
+					id: zone['id'] as String,
+					name: zone['name'] as String,
+					latitude: zone['latitude'] as double,
+					longitude: zone['longitude'] as double,
+					radiusKm: zone['radius_km'] as int,
+				);
+			} catch (e) {
+				throw Exception('Erro ao buscar zona por ID: $e');
+			}
+
   	}
 
   	@override
   	Future update(Map<String, dynamic> body, int? id) {
     	throw UnimplementedError();
   	}
+
+
 	  
 }
 
