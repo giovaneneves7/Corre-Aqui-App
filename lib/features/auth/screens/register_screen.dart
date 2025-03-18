@@ -153,6 +153,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                             ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(color: Colors.red, width: 2),
+                            ),
                           ),
                         ),
                         const SizedBox(height: 12),
@@ -164,6 +168,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                             ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(color: Colors.red, width: 2),
+                            ),
                           ),
                         ),
                         const SizedBox(height: 12),
@@ -174,6 +182,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             labelText: 'Confirme a Senha',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(color: Colors.red, width: 2),
                             ),
                           ),
                         ),
@@ -198,12 +210,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(height: 10),
                         GestureDetector(
                           onTap: () => Get.toNamed(RouteHelper.getSignInScreen()),
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text("Já tem uma conta?"),
-                              const SizedBox(width: 3),
-                              const Text(
+                              Text("Já tem uma conta?"),
+                              SizedBox(width: 3),
+                              Text(
                                 "Entrar!",
                                 style: TextStyle(
                                   color: Colors.red,
@@ -212,6 +224,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                             ],
                           ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text("Ao registrar-se, você está de acordo com a nossa politica de privacidade.", style: TextStyle(fontSize: 6),)
+                          ],
                         ),
                       ],
                     ),

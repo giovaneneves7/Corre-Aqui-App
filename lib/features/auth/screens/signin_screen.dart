@@ -96,8 +96,9 @@ class _SigninScreenState extends State<SigninScreen> {
                           controller: _emailController,
                           decoration: InputDecoration(
                             labelText: 'E-mail',
-                            border: OutlineInputBorder(
+                            focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(color: Colors.red, width: 2),
                             ),
                           ),
                         ),
@@ -107,8 +108,9 @@ class _SigninScreenState extends State<SigninScreen> {
                           obscureText: true,
                           decoration: InputDecoration(
                             labelText: 'Senha',
-                            border: OutlineInputBorder(
+                            focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
+                              borderSide: const BorderSide(color: Colors.red, width: 2),
                             ),
                           ),
                         ),
@@ -122,8 +124,9 @@ class _SigninScreenState extends State<SigninScreen> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              backgroundColor: Colors.red, // Mantendo o botão vermelho
+                              backgroundColor: Colors.red,
                             ),
+
                             child: const Text(
                               'Entrar',
                               style: TextStyle(fontSize: 18, color: Colors.white),

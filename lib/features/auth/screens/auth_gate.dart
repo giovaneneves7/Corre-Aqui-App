@@ -33,7 +33,7 @@ class AuthGate extends StatelessWidget{
         });
 
         // loading...
-        return Scaffold(body: Center(child: CircularProgressIndicator())); 
+        return const Scaffold(body: Center(child: CircularProgressIndicator()));
 
 
       }
