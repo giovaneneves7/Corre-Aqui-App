@@ -1,6 +1,7 @@
 import 'package:corre_aqui/features/auth/domain/services/auth_service.dart';
 import 'package:corre_aqui/helper/route_helper.dart';
 import 'package:corre_aqui/util/images.dart';
+import 'package:corre_aqui/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -135,13 +136,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               height: 50,
                             ),
                             const SizedBox(width: 10),
-                            const Text(
+                            Text(
                               'Corre Aqui!',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              ),
+                              style: lobsterTwoBold.copyWith(fontSize: 24),
                             ),
                           ],
                         ),
@@ -201,26 +198,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                               backgroundColor: Colors.red,
                             ),
-                            child: const Text(
+                            child: Text(
                               'Cadastrar',
-                              style: TextStyle(fontSize: 18, color: Colors.white),
+                              style: lobsterTwoBold.copyWith(fontSize: 18, color: Colors.white),
                             ),
                           ),
                         ),
                         const SizedBox(height: 10),
                         GestureDetector(
                           onTap: () => Get.toNamed(RouteHelper.getSignInScreen()),
-                          child: const Row(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Já tem uma conta?"),
+                              Text("Já tem uma conta?", style: stixTwoTextRegular,),
                               SizedBox(width: 3),
                               Text(
                                 "Entrar!",
-                                style: TextStyle(
-                                  color: Colors.red,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: lobsterTwoBold.copyWith(color: Colors.red),
                               ),
                             ],
                           ),

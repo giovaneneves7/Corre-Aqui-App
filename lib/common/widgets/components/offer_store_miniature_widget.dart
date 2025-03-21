@@ -24,9 +24,13 @@ class OfferStoreMiniatureWidget extends StatelessWidget{
                         radius: 12,
                     ),
                     const SizedBox(width: 8),
-                    Text(
-                       	store.name ?? '',
-                        style: stixTwoTextRegular.copyWith(fontSize: 14),
+                    Expanded(
+                      child: Text(
+                         	store.name ?? '',
+                          style: stixTwoTextRegular.copyWith(fontSize: 14),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                 ],
             ),

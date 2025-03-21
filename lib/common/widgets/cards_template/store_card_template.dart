@@ -25,6 +25,14 @@ class StoreCardTemplate extends StatelessWidget{
                     	image: NetworkImage(store.imageUrl),
                         fit: BoxFit.contain,
                     ),
+								boxShadow: [
+									BoxShadow(
+										color: Colors.grey.withOpacity(0.4),
+										spreadRadius: 2,
+										blurRadius: 4,
+										offset: const Offset(2, 4),
+									),
+								],
             	),
 	        ),
 	        const SizedBox(height: 8),

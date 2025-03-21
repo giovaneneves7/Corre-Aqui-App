@@ -1,6 +1,7 @@
 import 'package:corre_aqui/features/auth/domain/services/auth_service.dart';
 import 'package:corre_aqui/helper/route_helper.dart';
 import 'package:corre_aqui/util/images.dart';
+import 'package:corre_aqui/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -81,13 +82,9 @@ class _SigninScreenState extends State<SigninScreen> {
                               height: 50,
                             ),
                             const SizedBox(width: 10),
-                            const Text(
+                            Text(
                               'Corre Aqui!',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              ),
+                              style: lobsterTwoBold.copyWith(fontSize: 24)
                             ),
                           ],
                         ),
@@ -127,9 +124,9 @@ class _SigninScreenState extends State<SigninScreen> {
                               backgroundColor: Colors.red,
                             ),
 
-                            child: const Text(
+                            child: Text(
                               'Entrar',
-                              style: TextStyle(fontSize: 18, color: Colors.white),
+                              style: lobsterTwoBold.copyWith(fontSize: 18, color: Colors.white),
                             ),
                           ),
                         ),
@@ -139,13 +136,10 @@ class _SigninScreenState extends State<SigninScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text("Não tem uma conta?"),
+                              const Text("Não tem uma conta?", style: stixTwoTextRegular,),
                               const SizedBox(width: 3),
-                              const Text("Registre-se!",
-                                style: TextStyle(
-                                  color: Colors.red,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              Text("Registre-se!",
+                                style: lobsterTwoBold.copyWith(color: Colors.red),
                               ),
                             ],
                           ),
