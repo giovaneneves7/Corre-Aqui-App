@@ -26,7 +26,14 @@ class OfferCardTemplate extends StatelessWidget {
         return Container(
           decoration: BoxDecoration(
             color: Colors.white,
-            border: Border.all(color: Colors.grey.shade300, width: 1),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.3),
+                spreadRadius: 2,
+                blurRadius: 4,
+                offset: const Offset(2, 6),
+              ),
+            ],
             borderRadius: BorderRadius.circular(8),
           ),
           child: Column(
