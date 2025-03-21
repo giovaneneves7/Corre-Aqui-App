@@ -39,6 +39,22 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+  fonts:
+    - family: LobsterTwo
+      fonts:
+        - asset: assets/fonts/LobsterTwo-Regular.ttf
+        - asset: assets/fonts/LobsterTwo-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/LobsterTwo-Italic.ttf
+          style: italic
+    - family: STIXTwoText
+      fonts:
+        - asset: assets/fonts/STIXTwoText-Regular.ttf
+        - asset: assets/fonts/STIXTwoText-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/STIXTwoText-Italic.ttf
+          style: italic
+
   # Enable generation of localized Strings from arb files.
   generate: true
 
