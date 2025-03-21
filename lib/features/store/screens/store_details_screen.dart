@@ -7,6 +7,7 @@ import 'package:corre_aqui/features/store/domain/models/store.dart';
 import 'package:corre_aqui/features/store/widgets/route_button_widget.dart';
 import 'package:corre_aqui/features/store/widgets/store_banner_widget.dart';
 import 'package:corre_aqui/helper/route_helper.dart';
+import 'package:corre_aqui/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +18,7 @@ import 'package:get/get.dart';
 class StoreDetailsScreen extends StatefulWidget {
   final int storeId;
 
-  StoreDetailsScreen({required this.storeId});
+  StoreDetailsScreen({super.key, required this.storeId});
 
   @override
   State<StoreDetailsScreen> createState() => _StoreDetailsScreenState();
@@ -74,10 +75,7 @@ class _StoreDetailsScreenState extends State<StoreDetailsScreen> {
                             children: [
                               Text(
                                 store.name,
-                                style: const TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: lobsterTwoBold.copyWith(fontSize: 22)
                               ),
                               const SizedBox(height: 4),
                             ],
@@ -107,9 +105,9 @@ class _StoreDetailsScreenState extends State<StoreDetailsScreen> {
                     // Promotions and Offers
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: const Text(
+                      child: Text(
                         'Promoções e Ofertas',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        style: stixTwoTextBold.copyWith(fontSize: 18),
                       ),
                     ),
                     const SizedBox(height: 8),

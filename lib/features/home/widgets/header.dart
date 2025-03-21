@@ -1,5 +1,6 @@
 
 import 'package:corre_aqui/features/home/widgets/zone_dropdown_widget.dart';
+import 'package:corre_aqui/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,15 +14,18 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const Text(
-          "Corre Aqui!",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-        ZoneDropdownWidget(),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+            Text(
+            "Corre Aqui!",
+            style: lobsterTwoBold.copyWith(fontSize: 24),
+          ),
+          ZoneDropdownWidget(),
+        ],
+      ),
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:corre_aqui/common/widgets/cards_template/store_card_template.dart';
+import 'package:corre_aqui/features/home/widgets/components/see_more_button_widget.dart';
 import 'package:corre_aqui/features/store/controllers/store_controller.dart';
 import 'package:corre_aqui/helper/route_helper.dart';
+import 'package:corre_aqui/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,20 +26,15 @@ class NewStoresSection extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                  Text(
                     "Estabelecimentos",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: lobsterTwoBold.copyWith(fontSize: 18),
                   ),
                   TextButton(
                     onPressed: () {
                       Get.toNamed(RouteHelper.getAllStoresScreen());
                     },
-                    child: const Text(
-                      "Ver Todos",
-                      style: TextStyle(
-                        color: Colors.red,
-                      ),
-                    ),
+                    child: const SeeMoreButtonWidget(),
                   ),
                 ],
               ),

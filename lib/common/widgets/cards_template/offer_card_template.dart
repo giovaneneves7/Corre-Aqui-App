@@ -2,6 +2,7 @@ import 'package:corre_aqui/common/widgets/components/offer_store_miniature_widge
 import 'package:corre_aqui/features/offer/domain/models/offer.dart';
 import 'package:corre_aqui/features/store/controllers/store_controller.dart';
 import 'package:corre_aqui/features/store/domain/models/store.dart';
+import 'package:corre_aqui/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,7 +11,7 @@ class OfferCardTemplate extends StatelessWidget {
   final Offer offer;
   late Store store;
 
-  OfferCardTemplate({required this.offer, required this.isFromHome});
+  OfferCardTemplate({super.key, required this.offer, required this.isFromHome});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class OfferCardTemplate extends StatelessWidget {
                       fit: BoxFit.cover,
                       width: double.infinity,
                       errorBuilder: (context, error, stackTrace) =>
-                          Icon(Icons.broken_image, color: Colors.grey),
+                          const Icon(Icons.broken_image, color: Colors.grey),
                     ),
                   ),
                 ),
@@ -52,7 +53,7 @@ class OfferCardTemplate extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   offer.name,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: stixTwoTextRegular.copyWith(fontSize: 14),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -63,18 +64,12 @@ class OfferCardTemplate extends StatelessWidget {
                   children: [
                     Text(
                       'R\$ ${offer.originalPrice.toStringAsFixed(2)}',
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: Colors.grey,
-                            decoration: TextDecoration.lineThrough,
-                          ),
+                      style: stixTwoTextRegular.copyWith(color: Colors.grey, decoration: TextDecoration.lineThrough, fontSize: 10)
                     ),
                     const SizedBox(width: 8),
                     Text(
                       'R\$ ${offer.offerPrice.toStringAsFixed(2)}',
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      style: lobsterTwoBold.copyWith(color: Colors.red, fontSize: 16),
                     ),
                   ],
                 ),

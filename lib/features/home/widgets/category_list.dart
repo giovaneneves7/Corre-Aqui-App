@@ -1,6 +1,7 @@
 import 'package:corre_aqui/common/widgets/cards_template/category_card_template.dart';
 import 'package:corre_aqui/features/category/controllers/category_controller.dart';
 import 'package:corre_aqui/helper/route_helper.dart';
+import 'package:corre_aqui/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +21,7 @@ class CategoryList extends StatelessWidget {
             children: [
               Text(
                 "Categorias",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: lobsterTwoBold.copyWith(fontSize: 18)
               ),
             ],
           ),
@@ -68,8 +69,8 @@ class CategoryList extends StatelessWidget {
                           color: Colors.grey[200],
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: Center(
-                          child: Text("Mais", style: TextStyle(fontWeight: FontWeight.bold)),
+                        child: const Center(
+                          child: Text("Mais", style: lobsterTwoBold),
                         ),
                       ),
                     );

@@ -1,4 +1,5 @@
 import 'package:corre_aqui/common/widgets/cards_template/offer_card_template.dart';
+import 'package:corre_aqui/common/widgets/return_app_bar.dart';
 import 'package:corre_aqui/features/offer/controllers/offer_controller.dart';
 import 'package:corre_aqui/helper/route_helper.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,7 @@ class AllOffersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Ofertas")),
+      appBar: ReturnAppBar(title: "Ofertas"),
       body: GetBuilder<OfferController>(
         builder: (controller) {
           if (controller.offerList.isEmpty) {

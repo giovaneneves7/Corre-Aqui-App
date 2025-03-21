@@ -1,5 +1,6 @@
 import 'package:corre_aqui/common/widgets/modals/zone_selector_modal.dart';
 import 'package:corre_aqui/features/zone/controllers/zone_controller.dart';
+import 'package:corre_aqui/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -34,7 +35,7 @@ class ZoneDropdownWidget extends StatelessWidget {
                 SizedBox(width: 4),
                 Text(
                   zoneController.closestZone?.name ?? 'Zona',
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                  style: stixTwoTextRegular.copyWith(fontSize: 14),
                 ),
                 SizedBox(width: 4),
                 Icon(Icons.arrow_drop_down, color: Colors.black),

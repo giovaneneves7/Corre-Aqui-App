@@ -1,6 +1,7 @@
 import 'package:corre_aqui/features/profile/controllers/profile_controller.dart';
 import 'package:corre_aqui/features/profile/domain/models/profile.dart';
 import 'package:corre_aqui/helper/route_helper.dart';
+import 'package:corre_aqui/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -65,18 +66,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     const SizedBox(height: 10),
                     Text(
                       profile.name,
-                      style: const TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+                      style: lobsterTwoBold.copyWith(fontSize: 22, color: Colors.white),
                     ),
                     Text(
                       email ?? "Email não disponível",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.white70,
-                      ),
+                      style: stixTwoTextRegular.copyWith(fontSize: 16, color: Colors.white70),
                     ),
                   ],
                 ),
@@ -99,13 +93,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               child: Column(
                 children: [
-                  const Text(
+                  Text(
                     "Código de Afiliação",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
+                    style: lobsterTwoBold.copyWith(fontSize: 18, color: Colors.black87),
                   ),
                   const SizedBox(height: 10),
                   Row(
@@ -113,11 +103,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     children: [
                       Text(
                         profile.memberCode,
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.redAccent,
-                        ),
+                        style: stixTwoTextBold.copyWith(fontSize: 24, color: Colors.redAccent),
                       ),
                       const SizedBox(width: 10),
                       IconButton(
@@ -151,9 +137,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: const Text(
+                child: Text(
                   "Sair",
-                  style: TextStyle(fontSize: 16, color: Colors.white),
+                  style: lobsterTwoBold.copyWith(fontSize: 18, color: Colors.white),
                 ),
               ),
             ),

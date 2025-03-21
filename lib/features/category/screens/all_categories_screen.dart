@@ -1,4 +1,5 @@
 import 'package:corre_aqui/common/widgets/cards_template/category_card_template.dart';
+import 'package:corre_aqui/common/widgets/return_app_bar.dart';
 import 'package:corre_aqui/features/category/controllers/category_controller.dart';
 import 'package:corre_aqui/helper/route_helper.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +13,7 @@ class AllCategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Todas as Categorias"),
-        centerTitle: true,
-      ),
+      appBar: ReturnAppBar(title: "Categorias"),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: GetBuilder<CategoryController>(

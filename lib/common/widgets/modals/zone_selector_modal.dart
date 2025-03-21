@@ -1,4 +1,5 @@
 import 'package:corre_aqui/features/zone/controllers/zone_controller.dart';
+import 'package:corre_aqui/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,9 +27,9 @@ class _ZoneSelectorModalState extends State<ZoneSelectorModal> {
             return Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text(
+                Text(
                   "Zonas Disponíveis",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: lobsterTwoBold.copyWith(fontSize: 18),
                 ),
                 const SizedBox(height: 10),
                 ListView.builder(
@@ -38,7 +39,7 @@ class _ZoneSelectorModalState extends State<ZoneSelectorModal> {
                     final zone = zoneController.zones[index];
                     final isSelected = zone.id == zoneController.closestZone?.id;
                     return ListTile(
-                      title: Text(zone.name),
+                      title: Text(zone.name, style: stixTwoTextRegular,),
                       trailing: isSelected
                           ? const Icon(Icons.check, color: Colors.green)
                           : null,
@@ -58,7 +59,7 @@ class _ZoneSelectorModalState extends State<ZoneSelectorModal> {
                     Icons.swap_horiz,
                     color: Colors.white,
                   ),
-                  label: const Text("Trocar Zona"),
+                  label: Text("Trocar Zona", style: lobsterTwoBold,),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.grey,
                   ),

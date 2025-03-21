@@ -1,4 +1,5 @@
 import 'package:corre_aqui/features/store/domain/models/store.dart';
+import 'package:corre_aqui/util/styles.dart';
 import 'package:flutter/material.dart';
 
 /**
@@ -22,14 +23,14 @@ class StoreCardTemplate extends StatelessWidget{
                     shape: BoxShape.circle,
                     image: DecorationImage(
                     	image: NetworkImage(store.imageUrl),
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                     ),
             	),
 	        ),
 	        const SizedBox(height: 8),
 	        Text(
 	          store.name,
-	          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+	          style: stixTwoTextRegular,
 	        ),
 	      ],
 	    );

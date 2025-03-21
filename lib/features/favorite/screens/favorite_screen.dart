@@ -1,6 +1,7 @@
 import 'package:corre_aqui/features/profile/controllers/profile_controller.dart';
 import 'package:corre_aqui/features/store/domain/models/store.dart';
 import 'package:corre_aqui/helper/route_helper.dart';
+import 'package:corre_aqui/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -38,8 +39,8 @@ class FavoriteScreen extends StatelessWidget {
                       leading: store.imageUrl.isNotEmpty
                           ? Image.network(store.imageUrl, width: 50, height: 50)
                           : Icon(Icons.store),
-                      title: Text(store.name),
-                      subtitle: Text(store.description ?? 'Nenhuma descrição foi adicionada'),
+                      title: Text(store.name, style: lobsterTwoBold,),
+                      subtitle: Text(store.description ?? 'Nenhuma descrição foi adicionada', style: stixTwoTextRegular,),
                       onTap: () {
                         Get.toNamed(RouteHelper.getStoreDetailsScreen(storeId: store.id));
                       },

@@ -1,4 +1,5 @@
 import 'package:corre_aqui/features/category/domain/models/category.dart';
+import 'package:corre_aqui/util/styles.dart';
 import 'package:flutter/material.dart';
 
 /**
@@ -30,8 +31,7 @@ class CategoryCardTemplate extends StatelessWidget{
                 const SizedBox(height: 8),
                 Text(
                    	category.name,
-                    style: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.w500),
+                    style: stixTwoTextRegular.copyWith(fontSize: 14),
                 ),
             ],
         );

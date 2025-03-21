@@ -1,4 +1,5 @@
 import 'package:corre_aqui/common/widgets/cards_template/store_card_template.dart';
+import 'package:corre_aqui/common/widgets/return_app_bar.dart';
 import 'package:corre_aqui/features/store/controllers/store_controller.dart';
 import 'package:corre_aqui/helper/route_helper.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class AllStoresScreen extends StatelessWidget {
     int crossAxisCount = screenWidth > 800 ? 4 : screenWidth > 600 ? 3 : 2;
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Estabelecimentos")),
+      appBar: ReturnAppBar(title: "Estabelecimentos"),
       body: GetBuilder<StoreController>(
         builder: (controller) {
           if (controller.stores.isEmpty) {

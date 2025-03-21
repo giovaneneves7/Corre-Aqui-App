@@ -1,4 +1,5 @@
 import 'package:corre_aqui/features/store/domain/models/store.dart';
+import 'package:corre_aqui/util/styles.dart';
 import 'package:flutter/material.dart';
 
 /**
@@ -22,10 +23,10 @@ class OfferStoreMiniatureWidget extends StatelessWidget{
                         backgroundImage: NetworkImage(store.imageUrl ?? ''),
                         radius: 12,
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Text(
                        	store.name ?? '',
-                        style: Theme.of(context).textTheme.bodySmall,
+                        style: stixTwoTextRegular.copyWith(fontSize: 14),
                     ),
                 ],
             ),

@@ -1,3 +1,4 @@
+import 'package:corre_aqui/util/styles.dart';
 import 'package:flutter/material.dart';
 
 /**
@@ -22,7 +23,8 @@ class ReturnAppBar extends StatelessWidget implements PreferredSizeWidget {
         icon: const Icon(Icons.arrow_back),
         onPressed: () => Navigator.of(context).pop(),
       ),
-      title: Text(title),
+      title: Text(title, style: lobsterTwoBold,),
+      centerTitle: true,
     );
   }
 }

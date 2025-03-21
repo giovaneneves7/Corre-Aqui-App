@@ -1,6 +1,8 @@
 import 'package:corre_aqui/common/widgets/cards_template/offer_card_template.dart';
+import 'package:corre_aqui/features/home/widgets/components/see_more_button_widget.dart';
 import 'package:corre_aqui/features/offer/controllers/offer_controller.dart';
 import 'package:corre_aqui/helper/route_helper.dart';
+import 'package:corre_aqui/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,16 +28,13 @@ class HotOffersWidget extends StatelessWidget {
                 children: [
                   Text(
                     "Maiores Descontos",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: lobsterTwoBold.copyWith(fontSize: 18),
                   ),
                   TextButton(
                     onPressed: () {
                       Get.toNamed(RouteHelper.getAllOffersScreen());
                     },
-                    child: Text(
-                      "Ver Mais",
-                      style: TextStyle(color: Colors.red),
-                    ),
+                    child: const SeeMoreButtonWidget(),
                   ),
                 ],
               ),
