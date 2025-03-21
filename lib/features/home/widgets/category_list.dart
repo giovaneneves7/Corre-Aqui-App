@@ -69,8 +69,8 @@ class CategoryList extends StatelessWidget {
                           color: Colors.grey[200],
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: const Center(
-                          child: Text("Mais", style: lobsterTwoBold),
+                        child: Center(
+                          child: Text("Mais", style: lobsterTwoBold.copyWith(color: Colors.red)),
                         ),
                       ),
                     );
