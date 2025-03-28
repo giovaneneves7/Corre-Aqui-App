@@ -35,7 +35,7 @@ class ZoneDropdownWidget extends StatelessWidget {
                 SizedBox(width: 4),
                 Text(
                   zoneController.closestZone?.name ?? 'Zona',
-                  style: stixTwoTextRegular.copyWith(fontSize: 14),
+                  style: secondaryRegular.copyWith(fontSize: 14),
                 ),
                 SizedBox(width: 4),
                 Icon(Icons.arrow_drop_down, color: Colors.black),

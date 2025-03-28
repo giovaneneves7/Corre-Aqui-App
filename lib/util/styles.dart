@@ -1,39 +1,39 @@
 import 'package:flutter/material.dart';
 
-// Estilos para LobsterTwo
-const lobsterTwoRegular = TextStyle(
+// Fonte primária
+const primaryRegular = TextStyle(
   fontFamily: 'LobsterTwo',
   fontWeight: FontWeight.w400,
 );
 
-const lobsterTwoBold = TextStyle(
+const primaryBold = TextStyle(
   fontFamily: 'LobsterTwo',
   fontWeight: FontWeight.w700,
 );
 
-const lobsterTwoItalic = TextStyle(
+const primaryItalic = TextStyle(
   fontFamily: 'LobsterTwo',
   fontStyle: FontStyle.italic,
 );
 
-const lobsterTwoBoldItalic = TextStyle(
+const primaryBoldItalic = TextStyle(
   fontFamily: 'LobsterTwo',
   fontWeight: FontWeight.w700,
   fontStyle: FontStyle.italic,
 );
 
-// Estilos para STIXTwoText
-const stixTwoTextRegular = TextStyle(
+// Fonte secundária
+const secondaryRegular = TextStyle(
   fontFamily: 'STIXTwoText',
   fontWeight: FontWeight.w400,
 );
 
-const stixTwoTextBold = TextStyle(
+const secondaryBold = TextStyle(
   fontFamily: 'STIXTwoText',
   fontWeight: FontWeight.w700,
 );
 
-const stixTwoTextItalic = TextStyle(
+const secondaryItalic = TextStyle(
   fontFamily: 'STIXTwoText',
   fontStyle: FontStyle.italic,
 );

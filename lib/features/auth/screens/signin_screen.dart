@@ -84,7 +84,7 @@ class _SigninScreenState extends State<SigninScreen> {
                             const SizedBox(width: 10),
                             Text(
                               'Corre Aqui!',
-                              style: lobsterTwoBold.copyWith(fontSize: 24)
+                              style: primaryBold.copyWith(fontSize: 24)
                             ),
                           ],
                         ),
@@ -126,7 +126,7 @@ class _SigninScreenState extends State<SigninScreen> {
 
                             child: Text(
                               'Entrar',
-                              style: lobsterTwoBold.copyWith(fontSize: 18, color: Colors.white),
+                              style: primaryBold.copyWith(fontSize: 18, color: Colors.white),
                             ),
                           ),
                         ),
@@ -136,10 +136,10 @@ class _SigninScreenState extends State<SigninScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text("Não tem uma conta?", style: stixTwoTextRegular,),
+                              const Text("Não tem uma conta?", style: secondaryRegular,),
                               const SizedBox(width: 3),
                               Text("Registre-se!",
-                                style: lobsterTwoBold.copyWith(color: Colors.red),
+                                style: primaryBold.copyWith(color: Colors.red),
                               ),
                             ],
                           ),

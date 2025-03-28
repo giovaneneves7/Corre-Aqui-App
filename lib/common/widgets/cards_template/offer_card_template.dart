@@ -60,7 +60,7 @@ class OfferCardTemplate extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   offer.name,
-                  style: stixTwoTextRegular.copyWith(fontSize: 14),
+                  style: secondaryRegular.copyWith(fontSize: 14),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -71,12 +71,12 @@ class OfferCardTemplate extends StatelessWidget {
                   children: [
                     Text(
                       'R\$ ${offer.originalPrice.toStringAsFixed(2)}',
-                      style: stixTwoTextRegular.copyWith(color: Colors.grey, decoration: TextDecoration.lineThrough, fontSize: 10)
+                      style: secondaryRegular.copyWith(color: Colors.grey, decoration: TextDecoration.lineThrough, fontSize: 10)
                     ),
                     const SizedBox(width: 8),
                     Text(
                       'R\$ ${offer.offerPrice.toStringAsFixed(2)}',
-                      style: lobsterTwoBold.copyWith(color: Colors.red, fontSize: 16),
+                      style: primaryBold.copyWith(color: Colors.red, fontSize: 16),
                     ),
                   ],
                 ),

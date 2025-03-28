@@ -28,7 +28,7 @@ class NewStoresSection extends StatelessWidget {
                 children: [
                   Text(
                     "Estabelecimentos",
-                    style: lobsterTwoBold.copyWith(fontSize: 18),
+                    style: primaryBold.copyWith(fontSize: 18),
                   ),
                   TextButton(
                     onPressed: () {

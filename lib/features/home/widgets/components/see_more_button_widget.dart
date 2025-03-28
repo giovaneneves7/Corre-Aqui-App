@@ -7,6 +7,6 @@ class SeeMoreButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("Ver Mais", style: lobsterTwoBold.copyWith(fontSize: 16, color: Colors.red),);
+    return Text("Ver Mais", style: primaryBold.copyWith(fontSize: 16, color: Colors.red),);
   }
 }

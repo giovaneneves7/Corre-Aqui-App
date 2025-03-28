@@ -27,7 +27,7 @@ class OfferStoreMiniatureWidget extends StatelessWidget{
                     Expanded(
                       child: Text(
                          	store.name ?? '',
-                          style: stixTwoTextRegular.copyWith(fontSize: 14),
+                          style: secondaryRegular.copyWith(fontSize: 14),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),

@@ -31,7 +31,7 @@ class CategoryCardTemplate extends StatelessWidget{
                 const SizedBox(height: 8),
                 Text(
                    	category.name,
-                    style: stixTwoTextRegular.copyWith(fontSize: 14),
+                    style: secondaryRegular.copyWith(fontSize: 14),
                 ),
             ],
         );

@@ -30,7 +30,7 @@ class HotOffersWidget extends StatelessWidget {
                   children: [
                     Text(
                       "Maiores Descontos",
-                      style: lobsterTwoBold.copyWith(fontSize: 18),
+                      style: primaryBold.copyWith(fontSize: 18),
                     ),
                     TextButton(
                       onPressed: () {

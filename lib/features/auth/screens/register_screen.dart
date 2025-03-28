@@ -138,7 +138,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             const SizedBox(width: 10),
                             Text(
                               'Corre Aqui!',
-                              style: lobsterTwoBold.copyWith(fontSize: 24),
+                              style: primaryBold.copyWith(fontSize: 24),
                             ),
                           ],
                         ),
@@ -200,7 +200,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             child: Text(
                               'Cadastrar',
-                              style: lobsterTwoBold.copyWith(fontSize: 18, color: Colors.white),
+                              style: primaryBold.copyWith(fontSize: 18, color: Colors.white),
                             ),
                           ),
                         ),
@@ -210,11 +210,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Já tem uma conta?", style: stixTwoTextRegular,),
+                              Text("Já tem uma conta?", style: secondaryRegular,),
                               SizedBox(width: 3),
                               Text(
                                 "Entrar!",
-                                style: lobsterTwoBold.copyWith(color: Colors.red),
+                                style: primaryBold.copyWith(color: Colors.red),
                               ),
                             ],
                           ),

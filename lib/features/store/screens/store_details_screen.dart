@@ -75,7 +75,7 @@ class _StoreDetailsScreenState extends State<StoreDetailsScreen> {
                             children: [
                               Text(
                                 store.name,
-                                style: lobsterTwoBold.copyWith(fontSize: 22)
+                                style: primaryBold.copyWith(fontSize: 22)
                               ),
                               const SizedBox(height: 4),
                             ],
@@ -107,7 +107,7 @@ class _StoreDetailsScreenState extends State<StoreDetailsScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Text(
                         'Promoções e Ofertas',
-                        style: stixTwoTextBold.copyWith(fontSize: 18),
+                        style: secondaryBold.copyWith(fontSize: 18),
                       ),
                     ),
                     const SizedBox(height: 8),

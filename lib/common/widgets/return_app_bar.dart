@@ -23,7 +23,7 @@ class ReturnAppBar extends StatelessWidget implements PreferredSizeWidget {
         icon: const Icon(Icons.arrow_back),
         onPressed: () => Navigator.of(context).pop(),
       ),
-      title: Text(title, style: lobsterTwoBold,),
+      title: Text(title, style: primaryBold,),
       centerTitle: true,
     );
   }

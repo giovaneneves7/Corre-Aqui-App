@@ -105,7 +105,7 @@ class _OfferDetailsScreenState extends State<OfferDetailsScreen> {
                               offer.description != null && offer.description!.isNotEmpty
                                   ? _isDescriptionExpanded
                                   ? offer.description! // Exibe a descrição completa
-                                  : "${offer.description!.substring(0, 100)}..." // Exibe parte do texto
+                                  : "${offer.description!.substring(0, 20)}..."
                                   : "Sem descrição disponível.",
                               style: const TextStyle(fontSize: 16),
                               overflow: _isDescriptionExpanded ? null : TextOverflow.ellipsis, // Não aplica elipse se expandido

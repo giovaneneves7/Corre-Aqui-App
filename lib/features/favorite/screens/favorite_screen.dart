@@ -39,8 +39,8 @@ class FavoriteScreen extends StatelessWidget {
                       leading: store.imageUrl.isNotEmpty
                           ? Image.network(store.imageUrl, width: 50, height: 50)
                           : Icon(Icons.store),
-                      title: Text(store.name, style: lobsterTwoBold,),
-                      subtitle: Text(store.description ?? 'Nenhuma descrição foi adicionada', style: stixTwoTextRegular,),
+                      title: Text(store.name, style: primaryBold,),
+                      subtitle: Text(store.description ?? 'Nenhuma descrição foi adicionada', style: secondaryRegular,),
                       onTap: () {
                         Get.toNamed(RouteHelper.getStoreDetailsScreen(storeId: store.id));
                       },

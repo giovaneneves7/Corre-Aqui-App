@@ -66,11 +66,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     const SizedBox(height: 10),
                     Text(
                       profile.name,
-                      style: lobsterTwoBold.copyWith(fontSize: 22, color: Colors.white),
+                      style: primaryBold.copyWith(fontSize: 22, color: Colors.white),
                     ),
                     Text(
                       email ?? "Email não disponível",
-                      style: stixTwoTextRegular.copyWith(fontSize: 16, color: Colors.white70),
+                      style: secondaryRegular.copyWith(fontSize: 16, color: Colors.white70),
                     ),
                   ],
                 ),
@@ -95,7 +95,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   Text(
                     "Código de Afiliação",
-                    style: lobsterTwoBold.copyWith(fontSize: 18, color: Colors.black87),
+                    style: primaryBold.copyWith(fontSize: 18, color: Colors.black87),
                   ),
                   const SizedBox(height: 10),
                   Row(
@@ -103,7 +103,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     children: [
                       Text(
                         profile.memberCode,
-                        style: stixTwoTextBold.copyWith(fontSize: 24, color: Colors.redAccent),
+                        style: secondaryBold.copyWith(fontSize: 24, color: Colors.redAccent),
                       ),
                       const SizedBox(width: 10),
                       IconButton(
@@ -139,7 +139,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 child: Text(
                   "Sair",
-                  style: lobsterTwoBold.copyWith(fontSize: 18, color: Colors.white),
+                  style: primaryBold.copyWith(fontSize: 18, color: Colors.white),
                 ),
               ),
             ),

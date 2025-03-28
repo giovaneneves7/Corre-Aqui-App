@@ -21,7 +21,7 @@ class CategoryList extends StatelessWidget {
             children: [
               Text(
                 "Categorias",
-                style: lobsterTwoBold.copyWith(fontSize: 18)
+                style: primaryBold.copyWith(fontSize: 18)
               ),
             ],
           ),
@@ -70,7 +70,7 @@ class CategoryList extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Center(
-                          child: Text("Mais", style: lobsterTwoBold.copyWith(color: Colors.red)),
+                          child: Text("Mais", style: primaryBold.copyWith(color: Colors.red)),
                         ),
                       ),
                     );

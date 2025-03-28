@@ -38,7 +38,7 @@ class StoreCardTemplate extends StatelessWidget{
 	        const SizedBox(height: 8),
 	        Text(
 	          store.name,
-	          style: stixTwoTextRegular,
+	          style: secondaryRegular,
 	        ),
 	      ],
 	    );

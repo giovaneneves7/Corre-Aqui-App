@@ -21,7 +21,7 @@ class Header extends StatelessWidget {
         children: [
             Text(
             "Corre Aqui!",
-            style: lobsterTwoBold.copyWith(fontSize: 24),
+            style: primaryBold.copyWith(fontSize: 24),
           ),
           ZoneDropdownWidget(),
         ],

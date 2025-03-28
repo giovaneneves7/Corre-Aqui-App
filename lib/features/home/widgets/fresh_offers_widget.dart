@@ -31,7 +31,7 @@ class FreshOffersWidget extends StatelessWidget {
                   children: [
                     Text(
                       "Últimas Ofertas",
-                      style: lobsterTwoBold.copyWith(fontSize: 18),
+                      style: primaryBold.copyWith(fontSize: 18),
                     ),
                     TextButton(
                       onPressed: () {

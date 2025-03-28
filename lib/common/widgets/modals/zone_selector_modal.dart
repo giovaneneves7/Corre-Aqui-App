@@ -29,7 +29,7 @@ class _ZoneSelectorModalState extends State<ZoneSelectorModal> {
               children: [
                 Text(
                   "Zonas Disponíveis",
-                  style: lobsterTwoBold.copyWith(fontSize: 18),
+                  style: primaryBold.copyWith(fontSize: 18),
                 ),
                 const SizedBox(height: 10),
                 ListView.builder(
@@ -39,7 +39,7 @@ class _ZoneSelectorModalState extends State<ZoneSelectorModal> {
                     final zone = zoneController.zones[index];
                     final isSelected = zone.id == zoneController.closestZone?.id;
                     return ListTile(
-                      title: Text(zone.name, style: stixTwoTextRegular,),
+                      title: Text(zone.name, style: secondaryRegular,),
                       trailing: isSelected
                           ? const Icon(Icons.check, color: Colors.green)
                           : null,
@@ -59,7 +59,7 @@ class _ZoneSelectorModalState extends State<ZoneSelectorModal> {
                     Icons.swap_horiz,
                     color: Colors.white,
                   ),
-                  label: Text("Trocar Zona", style: lobsterTwoBold,),
+                  label: Text("Trocar Zona", style: primaryBold,),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.grey,
                   ),

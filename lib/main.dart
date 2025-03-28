@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:corre_aqui/features/auth/screens/auth_gate.dart';
-import 'package:corre_aqui/features/auth/screens/signin_screen.dart';
-import 'package:corre_aqui/features/auth/screens/login_screen.dart';
-import 'package:corre_aqui/features/home/screens/home_screen.dart';
-import 'package:corre_aqui/features/splash/screens/post_splash_screen.dart';
 import 'package:corre_aqui/theme/custom_theme.dart';
 import 'package:corre_aqui/helper/route_helper.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
