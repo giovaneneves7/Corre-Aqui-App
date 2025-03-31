@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:corre_aqui/common/widgets/components/skeleton_shimmer.dart';
 import 'package:corre_aqui/features/banner/controllers/banner_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,18 +18,14 @@ class BannerCarousel extends StatelessWidget {
 		return GetBuilder<BannerController>(
 			builder: (controller) {
 				if (controller.bannerList.isEmpty) {
-					return Container(
-						height: 120,
-						decoration: BoxDecoration(
-							borderRadius: BorderRadius.circular(8),
-							color: Colors.grey.shade300,
-						),
-						alignment: Alignment.center,
-						child: const Text(
-							"Carregando banners...",
-							style: TextStyle(color: Colors.black),
+
+					return const SkeletonShimmer(
+						child: SkeletonWidget(
+							height: 120,
+							borderRadius: 8,
 						),
 					);
+
 				}
 
 				final banners = controller.bannerList.take(3).toList();
@@ -52,9 +50,20 @@ class BannerCarousel extends StatelessWidget {
 									margin: const EdgeInsets.symmetric(horizontal: 10),
 									decoration: BoxDecoration(
 										borderRadius: BorderRadius.circular(8),
-										image: DecorationImage(
-											image: NetworkImage(banner.imageUrl),
-											fit: BoxFit.cover,
+									),
+									child: CachedNetworkImage(
+										imageUrl: banner.imageUrl,
+										fit: BoxFit.cover,
+										placeholder: (context, url) => const SkeletonShimmer(
+											child: SkeletonWidget(
+												height: double.infinity,
+												width: double.infinity,
+												borderRadius: 8,
+											),
+										),
+										errorWidget: (context, url, error) => Container(
+											color: Colors.grey[300],
+											child: const Icon(Icons.error),
 										),
 									),
 								),
