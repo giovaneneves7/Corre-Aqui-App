@@ -1,3 +1,4 @@
+import 'package:corre_aqui/common/widgets/horizontal_logo_widget.dart';
 import 'package:corre_aqui/features/auth/domain/services/auth_service.dart';
 import 'package:corre_aqui/helper/route_helper.dart';
 import 'package:corre_aqui/util/images.dart';
@@ -73,21 +74,7 @@ class _SigninScreenState extends State<SigninScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              Images.logo,
-                              width: 50,
-                              height: 50,
-                            ),
-                            const SizedBox(width: 10),
-                            Text(
-                              'Corre Aqui!',
-                              style: primaryBold.copyWith(fontSize: 24)
-                            ),
-                          ],
-                        ),
+                        const HorizontalLogoWidget(),
                         const SizedBox(height: 20),
                         TextField(
                           controller: _emailController,

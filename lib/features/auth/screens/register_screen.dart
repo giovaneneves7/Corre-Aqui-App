@@ -1,3 +1,4 @@
+import 'package:corre_aqui/common/widgets/horizontal_logo_widget.dart';
 import 'package:corre_aqui/features/auth/domain/services/auth_service.dart';
 import 'package:corre_aqui/helper/route_helper.dart';
 import 'package:corre_aqui/util/images.dart';
@@ -127,21 +128,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              Images.logo,
-                              width: 50,
-                              height: 50,
-                            ),
-                            const SizedBox(width: 10),
-                            Text(
-                              'Corre Aqui!',
-                              style: primaryBold.copyWith(fontSize: 24),
-                            ),
-                          ],
-                        ),
+                        const HorizontalLogoWidget(),
                         const SizedBox(height: 20),
                         TextField(
                           controller: _emailController,
@@ -219,10 +206,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ],
                           ),
                         ),
-                        Row(
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text("Ao registrar-se, você está de acordo com a nossa politica de privacidade.", style: TextStyle(fontSize: 6),)
+                            Text("Ao registrar-se, você está de acordo com a nossa politica de privacidade.", style: TextStyle(fontSize: 6),)
                           ],
                         ),
                       ],
