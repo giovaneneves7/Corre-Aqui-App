@@ -44,20 +44,18 @@ flutter:
   uses-material-design: true
 
   fonts:
-    - family: LobsterTwo
+    - family: RaelaGrotesque
       fonts:
-        - asset: assets/fonts/LobsterTwo-Regular.ttf
-        - asset: assets/fonts/LobsterTwo-Bold.ttf
+        - asset: assets/fonts/RaelaGrotesque-Regular.ttf
+        - asset: assets/fonts/RaelaGrotesque-Bold.ttf
           weight: 700
-        - asset: assets/fonts/LobsterTwo-Italic.ttf
+        - asset: assets/fonts/RaelaGrotesque-Thin.ttf
           style: italic
-    - family: STIXTwoText
+    - family: NeutralSans
       fonts:
-        - asset: assets/fonts/STIXTwoText-Regular.ttf
-        - asset: assets/fonts/STIXTwoText-Bold.ttf
+        - asset: assets/fonts/NeutralSans-Regular.ttf
+        - asset: assets/fonts/NeutralSans-Bold.ttf
           weight: 700
-        - asset: assets/fonts/STIXTwoText-Italic.ttf
-          style: italic
 
   # Enable generation of localized Strings from arb files.
   generate: true

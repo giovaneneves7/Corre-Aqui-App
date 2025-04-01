@@ -44,7 +44,6 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> init() async {
 
-	
 	final sharedPreferences = await SharedPreferences.getInstance();
 	final supabaseClient = SupabaseApiClient(
     	client: Supabase.instance.client,
@@ -54,6 +53,7 @@ Future<void> init() async {
 
 	Get.lazyPut(() => sharedPreferences);
 	Get.lazyPut(() => supabaseClient);
+
 
 	// Repositories
 	BannerRepositoryInterface bannerRepository = BannerRepository(apiClient: Get.find());
@@ -103,7 +103,6 @@ Future<void> init() async {
 	ZoneServiceInterface zoneService = ZoneService(zoneRepository: Get.find(), sharedPreferences: Get.find());
 	Get.lazyPut(() => zoneService);
 
-	// Controllers
 	Get.lazyPut(() => BannerController(bannerServiceInterface: Get.find()));
 	Get.lazyPut(() => CategoryController(categoryServiceInterface: Get.find()));
 	Get.lazyPut(() => EventController(eventServiceInterface: Get.find()));
