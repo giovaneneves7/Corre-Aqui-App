@@ -5,6 +5,8 @@ class Images{
 	static const googleIcon = 'assets/images/google_icon.png';
 	static const logo = 'assets/images/logo.png';
 	static const logoRetangulo = 'assets/images/corre_aqui.jpg';
+	static const offerBackground = 'assets/images/offer_background.png';
 	static const pinOffer = 'assets/images/pin_offer.png';
 	static const sample = 'assets/images/quy_sorvetto.png';
+
 }

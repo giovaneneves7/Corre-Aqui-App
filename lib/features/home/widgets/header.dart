@@ -19,9 +19,18 @@ class Header extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-            Text(
-            "Corre Aqui!",
-            style: primaryBold.copyWith(fontSize: 24),
+          RichText(
+            text: TextSpan(
+              style: primaryBold.copyWith(fontSize: 22),
+              children: const [
+                TextSpan(text: 'CORRE A', style: TextStyle(color: Colors.black)),
+                TextSpan(
+                  text: 'Q',
+                  style: TextStyle(color: Colors.red),
+                ),
+                TextSpan(text: 'UI!', style: TextStyle(color: Colors.black)),
+              ],
+            ),
           ),
           ZoneDropdownWidget(),
         ],

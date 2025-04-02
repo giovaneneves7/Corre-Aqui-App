@@ -6,12 +6,12 @@ import 'package:corre_aqui/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-/**
- * Widget 'Últimas Ofertas'.
- * @author Giovane Neves
- * @since v0.0.1
- */
+/// Widget 'Últimas Ofertas'.
+/// @author Giovane Neves
+/// @since v0.0.1
 class FreshOffersWidget extends StatelessWidget {
+  const FreshOffersWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<OfferController>(
@@ -47,11 +47,11 @@ class FreshOffersWidget extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: controller.offerList.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: (MediaQuery.of(context).size.width ~/ 150).clamp(2, 4),
                   crossAxisSpacing: 8.0,
                   mainAxisSpacing: 8.0,
-                  childAspectRatio: 2 / 3,
+                  childAspectRatio: 1,
                 ),
                 itemBuilder: (context, index) {
                   final offer = controller.offerList[index];

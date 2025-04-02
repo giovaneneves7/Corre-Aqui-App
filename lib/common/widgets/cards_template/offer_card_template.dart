@@ -1,4 +1,3 @@
-import 'package:corre_aqui/common/widgets/components/offer_store_miniature_widget.dart';
 import 'package:corre_aqui/features/offer/domain/models/offer.dart';
 import 'package:corre_aqui/features/store/controllers/store_controller.dart';
 import 'package:corre_aqui/features/store/domain/models/store.dart';
@@ -23,65 +22,73 @@ class OfferCardTemplate extends StatelessWidget {
           return SizedBox.shrink();
         }
 
-        return Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.3),
-                spreadRadius: 2,
-                blurRadius: 4,
-                offset: const Offset(2, 6),
-              ),
-            ],
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.vertical(
-                    top: Radius.circular(8),
-                  ),
-                  child: Container(
-                    child: Image.network(
-                      offer.imageUrl,
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                      errorBuilder: (context, error, stackTrace) =>
-                          const Icon(Icons.broken_image, color: Colors.grey),
-                    ),
+        return SizedBox(
+          height: 180,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  spreadRadius: 1,
+                  blurRadius: 3,
+                  offset: const Offset(1, 3),
+                ),
+              ],
+            ),
+            padding: const EdgeInsets.all(8),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.network(
+                    offer.imageUrl,
+                    height: 80,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) =>
+                    const Icon(Icons.broken_image, color: Colors.grey, size: 60),
                   ),
                 ),
-              ),
-              isFromHome ? OfferStoreMiniatureWidget(store: store) : SizedBox(),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  offer.name,
-                  style: secondaryRegular.copyWith(fontSize: 14),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
+                const SizedBox(height: 8),
+                Expanded(
+                  child: Text(
+                    offer.name,
+                    style: secondaryBold.copyWith(fontSize: MediaQuery.of(context).size.width * 0.035),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Row(
+                const SizedBox(height: 4),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       'R\$ ${offer.originalPrice.toStringAsFixed(2)}',
-                      style: secondaryRegular.copyWith(color: Colors.grey, decoration: TextDecoration.lineThrough, fontSize: 10)
+                      style: secondaryRegular.copyWith(
+                        color: Colors.grey,
+                        decoration: TextDecoration.lineThrough,
+                        fontSize: 10,
+                      ),
                     ),
                     const SizedBox(width: 8),
                     Text(
                       'R\$ ${offer.offerPrice.toStringAsFixed(2)}',
-                      style: primaryBold.copyWith(color: Colors.red, fontSize: 16),
+                      style: primaryBold.copyWith(
+                        color: Colors.red,
+                        fontSize: 16,
+                      ),
                     ),
                   ],
                 ),
-              ),
-            ],
+                const SizedBox(height: 6),
+              ],
+            ),
           ),
         );
       },
