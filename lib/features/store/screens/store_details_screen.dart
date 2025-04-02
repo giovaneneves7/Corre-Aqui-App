@@ -117,9 +117,9 @@ class _StoreDetailsScreenState extends State<StoreDetailsScreen> {
                         final offers = offerController.getOffersByStoreId(store.id);
 
                         if (offers.isEmpty) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                            child: const Text(
+                          return const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 16.0),
+                            child: Text(
                               'Nada aqui por enquanto \'-\'',
                               style: TextStyle(color: Colors.grey),
                             ),
@@ -134,7 +134,7 @@ class _StoreDetailsScreenState extends State<StoreDetailsScreen> {
                             itemBuilder: (context, index) {
                               final offer = offers[index];
                               return Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                padding: const EdgeInsets.all(8.0),
                                 child: SizedBox(
                                   width: 180,
                                   child: GestureDetector(
