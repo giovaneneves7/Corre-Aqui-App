@@ -25,6 +25,11 @@ import 'package:corre_aqui/features/profile/domain/repositories/profile_reposito
 import 'package:corre_aqui/features/profile/domain/repositories/profile_repository_interface.dart';
 import 'package:corre_aqui/features/profile/domain/services/profile_service.dart';
 import 'package:corre_aqui/features/profile/domain/services/profile_service_interface.dart';
+import 'package:corre_aqui/features/ratings/controllers/ratings_controller.dart';
+import 'package:corre_aqui/features/ratings/domain/repositories/ratings_repository.dart';
+import 'package:corre_aqui/features/ratings/domain/repositories/ratings_repository_interface.dart';
+import 'package:corre_aqui/features/ratings/domain/services/ratings_service.dart';
+import 'package:corre_aqui/features/ratings/domain/services/ratings_service_interface.dart';
 import 'package:corre_aqui/features/store/domain/repositories/store_repository.dart';
 import 'package:corre_aqui/features/store/controllers/store_controller.dart';
 import 'package:corre_aqui/features/store/domain/repositories/store_repository_interface.dart';
@@ -71,6 +76,9 @@ Future<void> init() async {
 	ProfileRepositoryInterface profileRepositoryInterface = ProfileRepository(apiClient: Get.find());
 	Get.lazyPut(() => profileRepositoryInterface);
 
+	RatingsRepositoryInterface ratingsRepository = RatingsRepository(apiClient: Get.find());
+	Get.lazyPut(() => ratingsRepository);
+
 	StoreRepositoryInterface storeRepository = StoreRepository(apiClient: Get.find());
 	Get.lazyPut(() => storeRepository);
 
@@ -97,6 +105,9 @@ Future<void> init() async {
 	ProfileServiceInterface profileServiceInterface = ProfileService(profileRepository: Get.find());
 	Get.lazyPut(() => profileServiceInterface);
 
+	RatingsServiceInterface ratingsService = RatingsService(ratingsRepository: Get.find());
+	Get.lazyPut(() => ratingsService);
+
 	StoreServiceInterface storeService = StoreService(storeRepository: Get.find());
 	Get.lazyPut(() => storeService);
 
@@ -108,6 +119,7 @@ Future<void> init() async {
 	Get.lazyPut(() => EventController(eventServiceInterface: Get.find()));
 	Get.lazyPut(() => OfferController(offerServiceInterface: Get.find()));
 	Get.lazyPut(() => ProfileController(profileService: Get.find()));
+	Get.lazyPut(() => RatingsController(ratingsService: Get.find()));
 	Get.lazyPut(() => StoreController(storeService: Get.find()));
 	Get.lazyPut(() => ZoneController(zoneService: Get.find()));
 }
