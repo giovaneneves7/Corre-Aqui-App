@@ -6,12 +6,10 @@ import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-/**
- * Home's screen banner carousel.
- *
- * @author Giovane Neves
- * @since v0.0.1
- */
+/// Home's screen banner carousel.
+///
+/// @author Giovane Neves
+/// @since v0x.0.1
 class BannerCarousel extends StatelessWidget {
 	@override
 	Widget build(BuildContext context) {
@@ -31,39 +29,50 @@ class BannerCarousel extends StatelessWidget {
 				final banners = controller.bannerList.take(3).toList();
 
 				return SizedBox(
-					height: 120,
+					height: 130,
 					child: CarouselSlider.builder(
 						itemCount: banners.length,
 						options: CarouselOptions(
-							height: 120,
-							viewportFraction: 0.8, // Espaço para mostrar parte do próximo banner
+							height: 130,
+							viewportFraction: 0.85, // Espaço para mostrar parte do próximo banner
 							autoPlay: true,
 							autoPlayInterval: const Duration(seconds: 4),
 							enableInfiniteScroll: true,
 						),
+						// Dentro do itemBuilder do CarouselSlider.builder
 						itemBuilder: (context, index, realIndex) {
 							final banner = banners[index];
 
 							return GestureDetector(
 								onTap: () => _handleRedirect(banner.redirectUrl),
 								child: Container(
-									margin: const EdgeInsets.symmetric(horizontal: 10),
+									margin: const EdgeInsets.symmetric(horizontal: 12),
 									decoration: BoxDecoration(
-										borderRadius: BorderRadius.circular(8),
+										borderRadius: BorderRadius.circular(10),
+										boxShadow: [
+											BoxShadow(
+												color: Colors.black12,
+												blurRadius: 6,
+												offset: Offset(0, 4),
+											)
+										],
 									),
-									child: CachedNetworkImage(
-										imageUrl: banner.imageUrl,
-										fit: BoxFit.cover,
-										placeholder: (context, url) => const SkeletonShimmer(
-											child: SkeletonWidget(
-												height: double.infinity,
-												width: double.infinity,
-												borderRadius: 8,
+									child: ClipRRect(
+										borderRadius: BorderRadius.circular(12),
+										child: CachedNetworkImage(
+											imageUrl: banner.imageUrl,
+											fit: BoxFit.cover,
+											placeholder: (context, url) => const SkeletonShimmer(
+												child: SkeletonWidget(
+													height: double.infinity,
+													width: double.infinity,
+													borderRadius: 65, // Atualize aqui também
+												),
 											),
-										),
-										errorWidget: (context, url, error) => Container(
-											color: Colors.grey[300],
-											child: const Icon(Icons.error),
+											errorWidget: (context, url, error) => Container(
+												color: Colors.grey[300],
+												child: const Icon(Icons.error),
+											),
 										),
 									),
 								),
