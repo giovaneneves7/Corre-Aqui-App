@@ -40,6 +40,7 @@ import 'package:corre_aqui/features/zone/domain/repositories/zone_repository.dar
 import 'package:corre_aqui/features/zone/domain/repositories/zone_repository_interface.dart';
 import 'package:corre_aqui/features/zone/domain/services/zone_service.dart';
 import 'package:corre_aqui/features/zone/domain/services/zone_service_interface.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'package:get/get.dart';
 
@@ -49,6 +50,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> init() async {
 
+	final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 	final sharedPreferences = await SharedPreferences.getInstance();
 	final supabaseClient = SupabaseApiClient(
     	client: Supabase.instance.client,
@@ -56,6 +58,7 @@ Future<void> init() async {
   		sharedPreferences: sharedPreferences,
   	);
 
+	Get.lazyPut(() => flutterLocalNotificationsPlugin);
 	Get.lazyPut(() => sharedPreferences);
 	Get.lazyPut(() => supabaseClient);
 
