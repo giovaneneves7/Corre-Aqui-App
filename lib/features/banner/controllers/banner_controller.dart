@@ -23,22 +23,29 @@ class BannerController extends GetxController implements GetxService {
 		getBannerList();
 	}
 
-	Future<void> getBannerList() async {
+	Future<void> getBannerList({bool refresh = false}) async {
 		if (_isLoading) return;
 		_isLoading = true;
 
-		final cachedData = _storage.read<List>('cachedBanners');
-		if (cachedData != null) {
-			_bannerList = cachedData.map((e) => Banner.fromJson(e)).toList();
-			update();
+		if(!refresh){
+			final cachedData = _storage.read<List>('cachedBanners');
+			if (cachedData != null) {
+				_bannerList = cachedData.map((e) => Banner.fromJson(e)).toList();
+				update();
+			}
 		}
 
 		try {
 
-			_bannerList = await bannerServiceInterface.getBannerList();
-			_storage.write('cachedBanners', _bannerList.map((e) => e.toJson()).toList());
-			_storage.write('bannerTimestamp', DateTime.now().millisecondsSinceEpoch);
-			update();
+			final newBanners = await bannerServiceInterface.getBannerList();
+
+			if(_hasChanges(newBanners)){
+				_bannerList = newBanners;
+				_storage.write('cachedBanners', _bannerList.map((e) => e.toJson()).toList());
+				_storage.write('bannerTimestamp', DateTime.now().millisecondsSinceEpoch);
+				update();
+			}
+
 
 		} catch (e){
 
@@ -52,5 +59,11 @@ class BannerController extends GetxController implements GetxService {
 			_isLoading = false;
 		}
 	}
+
+	bool _hasChanges(List<Banner> newBanners) {
+		return newBanners.length != _bannerList.length ||
+				newBanners.any((banner) => !_bannerList.contains(banner));
+	}
+
 
 }

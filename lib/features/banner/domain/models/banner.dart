@@ -1,13 +1,25 @@
-/**
-* @author Giovane Neves
-* @since v0.0.1
-*/
+import 'package:hive/hive.dart';
+
+part 'banner.g.dart';
+
+/// @author Giovane Neves
+/// @since v0.0.1
+@HiveType(typeId: 0)
 class Banner{
 
+	@HiveField(0)
 	final String id;
+
+	@HiveField(1)
 	final String imageUrl;
+
+	@HiveField(2)
 	final String? description;
+
+	@HiveField(3)
 	final String? name;
+
+	@HiveField(4)
 	final String? redirectUrl;
 
 	Banner({
