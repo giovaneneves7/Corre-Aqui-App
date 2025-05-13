@@ -42,7 +42,7 @@ class CategoryController extends GetxController implements GetxService {
 			if(_hasChanges(newCategories)){
 				_categoryList = newCategories;
 				_storage.write(Constants.cachedCategories, _categoryList.map((c) => c.toJson()).toList());
-				_storage.write(Constants.categoryTimestamp, DateTime.now().millisecondsSinceEpoch);
+				_storage.write(Constants.cachedCategoryTimestamp, DateTime.now().millisecondsSinceEpoch);
 				update();
 			}
 

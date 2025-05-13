@@ -4,7 +4,9 @@ class Constants{
 
 	// cache
 	static const String cachedCategories = 'cachedCategories';
-	static const String categoryTimestamp = 'categoryTimestamp';
+	static const String cachedCategoryTimestamp = 'categoryTimestamp';
+	static const String cachedFavoriteStores = 'cachedFavoriteStores';
+	static const String cachedFavoriteStoresTimestamp = 'cachedFavoriteStoresTimestamp';
 
 	// Tables
 	static const String ratings = "ratings";
