@@ -1,9 +1,9 @@
 import 'package:corre_aqui/api/supabase_api_client.dart';
 import 'package:corre_aqui/features/store/domain/models/store.dart';
+import 'package:corre_aqui/features/store/domain/models/store_hour.dart';
 import 'package:corre_aqui/features/store/domain/repositories/store_repository_interface.dart';
-import 'package:get/get.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
+/// @author Giovane Neves
 class StoreRepository implements StoreRepositoryInterface{
 
 	final SupabaseApiClient apiClient;
@@ -14,8 +14,11 @@ class StoreRepository implements StoreRepositoryInterface{
 	Future<List<Store>> getList() async {
 
 		try{
-		
-			final data = await apiClient.getData('stores');
+
+			final data = await apiClient.getDataWithJoin(
+				table: 'stores',
+				join: 'store_hours(*)',
+			);
 
 			return data.map((store) {
 		        
@@ -29,6 +32,9 @@ class StoreRepository implements StoreRepositoryInterface{
 							latitude: store['latitude'] as double,
 							longitude: store['longitude'] as double,
 							description: store['description'] as String?,
+							hours: (store['store_hours'] as List<dynamic>?)?.map((e) {
+								return StoreHour.fromJson(Map<String, dynamic>.from(e));
+							}).toList() ?? [],
 		        );
 
 		     }).toList();

@@ -1,3 +1,5 @@
+import 'package:corre_aqui/features/store/domain/models/store_hour.dart';
+
 /// Classe que representa um estabelecimento comercial.
 ///
 /// @author Giovane Neves
@@ -13,8 +15,20 @@ class Store{
 	final double latitude;
 	final double longitude;
 	final String? description;
+	final List<StoreHour> hours;
 
-	Store({required this.id, required this.categoryId, required this.cnpj, required this.name, required this.imageUrl, required this.bannerUrl, required this.latitude, required this.longitude, required this.description});
+	Store({
+		required this.id,
+		required this.categoryId,
+		required this.cnpj,
+		required this.name,
+		required this.imageUrl,
+		required this.bannerUrl,
+		required this.latitude,
+		required this.longitude,
+		required this.description,
+		this.hours = const [],
+	});
 
 	factory Store.fromJson(Map<String, dynamic> json){
 
@@ -27,7 +41,10 @@ class Store{
 				bannerUrl: json['banner_url'],
 				latitude: json['latitude'],
 				longitude: json['longitude'],
-				description: json['description']
+				description: json['description'],
+				hours: json['hours'] != null
+						? List<Map<String, dynamic>>.from(json['hours']).map((e) => StoreHour.fromJson(e)).toList()
+						: [],
 		);
 
 	}
@@ -44,6 +61,7 @@ class Store{
 			'latitude' : latitude,
 			'longitude' : longitude,
 			'description' : description,
+			'hours': hours.map((e) => e.toJson()).toList(),
 		};
 
 	}

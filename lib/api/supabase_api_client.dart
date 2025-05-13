@@ -27,6 +27,25 @@ class SupabaseApiClient {
     }
   }
 
+  // Generic method for query with join
+  Future<List<Map<String, dynamic>>> getDataWithJoin({
+    required String table,
+    required String join,
+    Map<String, dynamic>? filters,
+  }) async {
+    try {
+      var query = client.from(table).select('*, $join');
+      filters?.forEach((key, value) {
+        query = query.eq(key, value);
+      });
+      final response = await query;
+      return List<Map<String, dynamic>>.from(response);
+    } catch (e) {
+      throw Exception('Erro ao buscar dados com join: $e');
+    }
+  }
+
+
   // Método genérico para inserir dados
   Future<void> postData(String table, Map<String, dynamic> body) async {
     try {
