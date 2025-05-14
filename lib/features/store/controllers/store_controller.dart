@@ -1,8 +1,10 @@
 import 'package:corre_aqui/features/store/domain/models/store.dart';
 import 'package:corre_aqui/features/store/domain/models/store_hour.dart';
 import 'package:corre_aqui/features/store/domain/services/store_service_interface.dart';
+import 'package:corre_aqui/util/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 /// Widget 'Últimas Ofertas'.
 /// @author Giovane Neves
@@ -10,9 +12,11 @@ import 'package:get/get.dart';
 class StoreController extends GetxController implements GetxService{
 
 	final StoreServiceInterface storeService;
+	final GetStorage _storage = GetStorage();
 
 	StoreController({required this.storeService});
 
+	bool _isLoading = false;
 	List<Store> _stores = [];
 	List<Store> get stores => _stores;
 
@@ -24,12 +28,55 @@ class StoreController extends GetxController implements GetxService{
 
 	}
 	
-	Future<void> getStoreList() async{
+	Future<void> getStoreList({bool refresh = false}) async{
 
-		_stores = await storeService.getStoreList();
-		update();
+		if(_isLoading) return;
+		_isLoading = true;
 
-	} 
+		if(!refresh) _readCachedData();
+
+		try{
+
+			final newStores = await storeService.getStoreList();
+
+			if(_hasChanges(newStores)){
+
+				_stores = newStores;
+				_storage.write(Constants.cachedStores, _stores.map((s) => s.toJson()).toList());
+				_storage.write(Constants.cachedStoresTimestamp, DateTime.now().millisecondsSinceEpoch);
+				update();
+
+
+			}
+
+		} catch(e){
+
+			_readCachedData();
+
+		} finally{
+
+			_isLoading = false;
+
+		}
+
+
+	}
+
+
+	bool _hasChanges(List<Store> newStores) {
+		return newStores.length != _stores.length ||
+				newStores.any((store) => !_stores.contains(store));
+	}
+
+	void _readCachedData(){
+
+		final cachedData = _storage.read<List>(Constants.cachedStores);
+		if(cachedData != null){
+			_stores = cachedData.map((c) => Store.fromJson(c)).toList();
+			update();
+		}
+
+	}
 
 	/**
 	* Browser for a store by the param id. 

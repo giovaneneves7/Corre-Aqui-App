@@ -7,14 +7,13 @@ import 'package:corre_aqui/features/home/widgets/header.dart';
 import 'package:corre_aqui/features/home/widgets/hot_offers_widget.dart';
 import 'package:corre_aqui/features/home/widgets/new_stores_section.dart';
 import 'package:corre_aqui/features/home/widgets/searchbar.dart';
+import 'package:corre_aqui/features/store/controllers/store_controller.dart';
 import 'package:corre_aqui/helper/route_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-/**
-* @author Giovane Neves
-* @since v0.0.1
-*/
+/// @author Giovane Neves
+/// @since v0.0.1
 class HomeOfferScreen extends StatelessWidget {
   const HomeOfferScreen({Key? key}) : super(key: key);
 
@@ -22,8 +21,9 @@ class HomeOfferScreen extends StatelessWidget {
 
     try{
       
-      Get.find<BannerController>().getBannerList(refresh: true);
-      Get.find<CategoryController>().getCategoryList(refresh: true);
+      await Get.find<BannerController>().getBannerList(refresh: true);
+      await Get.find<CategoryController>().getCategoryList(refresh: true);
+      await Get.find<StoreController>().getStoreList(refresh: true);
 
     } catch(e){
       
